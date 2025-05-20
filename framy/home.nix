@@ -13,7 +13,7 @@
     btop
     wl-clipboard
     ulauncher
-    webkitgtk_4_0
+    thunderbird
   ];
   
   programs.neovim = {
@@ -27,6 +27,7 @@
     enable = true;
     userName = "Schreipfelerer";
     userEmail = "Schreipfelerer@gmail.com";
+    delta.enable = true;
     extraConfig = {
       push.autoSetupRemote = true;
       init.defaultBranch = "main";
