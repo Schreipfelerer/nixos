@@ -35,6 +35,10 @@
     };
   };
 
+  programs.hyprlock.enable = true;
+
+  services.hypridle.enable = true;
+
   programs.firefox = {
     enable = true;
   };

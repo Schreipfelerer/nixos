@@ -15,6 +15,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.systemd.enable = true;
 
+  
+
   boot.lanzaboote = {
     enable = true;
     pkiBundle = "/var/lib/sbctl";
@@ -23,7 +25,8 @@
   security.tpm2.enable = true;
   security.tpm2.pkcs11.enable = true;  # expose /run/current-system/sw/lib/libtpm2_pkcs11.so
   security.tpm2.tctiEnvironment.enable = true;  # TPM2TOOLS_TCTI and TPM2_PKCS11_TCTI env variables
-  
+  security.pam.services.hyprlock = {}; # PAM for Hyprlock
+
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
   networking.hostName = "framy";
 
@@ -57,6 +60,13 @@
     enable = true;
     pulse.enable = true;
   };
+
+  # Fonts
+  fonts.packages = with pkgs; [
+    nerd-fonts._0xproto
+    nerd-fonts.symbols-only
+  ];
+
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
