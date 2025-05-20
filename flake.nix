@@ -11,6 +11,10 @@
 
     # NixOS Hardware
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    # Secure Boot Stuff
+    lanzaboote.url = "github:nix-community/lanzaboote/v0.4.2";
+    lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -18,6 +22,7 @@
     nixpkgs,
     home-manager,
     nixos-hardware,
+    lanzaboote,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -33,6 +38,7 @@
 	  ./framy/configuration.nix
           home-manager.nixosModules.home-manager
           nixos-hardware.nixosModules.framework-11th-gen-intel
+	  lanzaboote.nixosModules.lanzaboote
 	];
       };
     };

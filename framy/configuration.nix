@@ -11,8 +11,18 @@
     ];
 
    # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.enable = lib.mkForce false;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.initrd.systemd.enable = true;
+
+  boot.lanzaboote = {
+    enable = true;
+    pkiBundle = "/var/lib/sbctl";
+  };
+
+  security.tpm2.enable = true;
+  security.tpm2.pkcs11.enable = true;  # expose /run/current-system/sw/lib/libtpm2_pkcs11.so
+  security.tpm2.tctiEnvironment.enable = true;  # TPM2TOOLS_TCTI and TPM2_PKCS11_TCTI env variables
   
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
   networking.hostName = "framy";
@@ -57,6 +67,7 @@
     extraGroups = [ 
       "wheel"
       "networkmanager"
+      "tss"
     ];
   };
 

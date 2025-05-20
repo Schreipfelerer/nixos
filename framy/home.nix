@@ -13,6 +13,7 @@
     btop
     wl-clipboard
     ulauncher
+    webkitgtk_4_0
   ];
   
   programs.neovim = {
