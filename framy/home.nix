@@ -24,6 +24,13 @@
 
   programs.git = {
     enable = true;
+    userName = "Schreipfelerer";
+    userEmail = "Schreipfelerer@gmail.com";
+    extraConfig = {
+      push.autoSetupRemote = true;
+      init.defaultBranch = "main";
+      pull.rebase = true;
+    };
   };
 
   programs.firefox = {
