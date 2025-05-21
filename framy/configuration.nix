@@ -61,11 +61,31 @@
     pulse.enable = true;
   };
 
+  # Bluetooth
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+  services.blueman.enable = true;
+
   # Fonts
-  fonts.packages = with pkgs; [
-    nerd-fonts._0xproto
-    nerd-fonts.symbols-only
-  ];
+  fonts = {
+    enableDefaultPackages = true;
+    packages = [
+      pkgs.noto-fonts-color-emoji
+      pkgs.nerd-fonts._0xproto
+      pkgs.nerd-fonts.symbols-only
+      pkgs.nerd-fonts.jetbrains_mono
+      pkgs.noto-fonts-cjk-sans
+    ];
+    fontconfig = {
+      enable = true;
+      defaultFonts = {
+        serif = [ "Noto Serif" ];
+        sansSerif = [ "0xProto Nerd Font" ];
+        monospace = [ "JetBrains Mono" ];
+        emoji = [ "Noto Color Emoji" ];
+      };
+    };
+  };
 
 
   # Enable touchpad support (enabled default in most desktopManager).

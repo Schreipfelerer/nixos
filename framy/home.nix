@@ -14,6 +14,14 @@
     wl-clipboard
     (ulauncher.override { webkitgtk_4_1 = webkitgtk_4_0; })
     thunderbird
+    firefox
+    nautilus
+    discord
+    gimp3
+    waybar
+    hyprland
+    hypridle
+    hyprlock
   ];
   
   programs.neovim = {
@@ -35,24 +43,7 @@
     };
   };
 
-  programs.hyprlock.enable = true;
-
-  services.hypridle.enable = true;
-
-  programs.firefox = {
-    enable = true;
-  };
-
   programs.kitty = {
-    enable = true;
-  };
-
-  wayland.windowManager.hyprland = {
-    enable = true;
-    extraConfig = builtins.readFile ./hyprland.conf;
-  };
-
-  programs.waybar = {
     enable = true;
   };
 
