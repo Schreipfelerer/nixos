@@ -1,5 +1,5 @@
 {
-  description = "Your new nix config";
+  description = "My nix config";
 
   inputs = {
     # Nixpkgs
@@ -30,7 +30,6 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
-      # FIXME replace with your hostname
       framy = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         # > Our main nixos configuration file <

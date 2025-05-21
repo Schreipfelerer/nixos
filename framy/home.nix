@@ -12,7 +12,7 @@
   home.packages = with pkgs; [
     btop
     wl-clipboard
-    ulauncher
+    (ulauncher.override { webkitgtk_4_1 = webkitgtk_4_0; })
     thunderbird
   ];
   
