@@ -30,8 +30,10 @@
     playerctl
     python314
     nodejs_24
+    corepack_24
     libgcc
     gcc
+    ripgrep
   ];
   
   programs.neovim = {
