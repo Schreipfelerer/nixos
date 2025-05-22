@@ -28,12 +28,8 @@
     spotify
     steam
     playerctl
-    python314
     nodejs_24
     corepack_24
-    libgcc
-    gcc
-    ripgrep
   ];
   
   programs.neovim = {
@@ -41,6 +37,9 @@
     viAlias = true;
     vimAlias = true;
     defaultEditor = true;
+    extraPackages = with pkgs; [
+      ripgrep
+    ];
   };
 
   programs.git = {
@@ -66,6 +65,13 @@
   programs.fastfetch = {
     enable = true;
   };
+
+
+
+  # Stylix
+  stylix.enable = true;
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-soft.yaml";
+  stylix.targets.neovim.enable = false;
 
   home.stateVersion = "25.05";
 }
