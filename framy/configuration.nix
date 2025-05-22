@@ -15,7 +15,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.systemd.enable = true;
 
-  
+  boot.loader.timeout = 5;
 
   boot.lanzaboote = {
     enable = true;
@@ -73,7 +73,7 @@
       pkgs.noto-fonts-color-emoji
       pkgs.nerd-fonts._0xproto
       pkgs.nerd-fonts.symbols-only
-      pkgs.nerd-fonts.jetbrains_mono
+      pkgs.nerd-fonts.jetbrains-mono
       pkgs.noto-fonts-cjk-sans
     ];
     fontconfig = {

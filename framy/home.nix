@@ -21,7 +21,17 @@
     waybar
     hyprland
     hypridle
+    hyprpaper
     hyprlock
+    brightnessctl
+    swaynotificationcenter
+    spotify
+    steam
+    playerctl
+    python314
+    nodejs_24
+    libgcc
+    gcc
   ];
   
   programs.neovim = {
