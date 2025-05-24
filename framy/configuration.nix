@@ -15,7 +15,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.systemd.enable = true;
 
-  boot.loader.timeout = 5;
+  boot.loader.timeout = 1;
 
   boot.lanzaboote = {
     enable = true;
@@ -103,12 +103,10 @@
   services.greetd = {
     enable = true;
     settings.default_session = {
-      command = "${pkgs.greetd.greetd}/bin/agreety --cmd  'sh -c \"dbus-run-session Hyprland\"'";
+      command = "${pkgs.greetd.greetd}/bin/agreety --cmd  hyprland";
     };
   };
 
-  services.xserver.enable = true;  # enables X11 base support
-  
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;

@@ -52,7 +52,7 @@
     enable = true;
     userName = "Schreipfelerer";
     userEmail = "Schreipfelerer@gmail.com";
-    delta.enable = true;
+    delta.enable = false;
     extraConfig = {
       push.autoSetupRemote = true;
       init.defaultBranch = "main";
@@ -75,10 +75,9 @@
 
 
   # Stylix
-  stylix.enable = false;
+  stylix.enable = true;
+  stylix.autoEnable = false;
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-medium.yaml";
-  stylix.targets.neovim.enable = false;
-  stylix.targets.gtk.enable = false;
 
   home.stateVersion = "25.05";
 }

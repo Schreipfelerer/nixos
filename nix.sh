@@ -31,5 +31,6 @@ if sudo nixos-rebuild "$subcommand"; then
     fi
 else
     echo "❌ nixos-rebuild $subcommand failed."
+    exit 1
 fi
 
