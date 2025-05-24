@@ -7,7 +7,7 @@ subcommand="${1:-switch}"
 
 # Show git diff
 echo "==> Showing Git diff:"
-git diff
+git diff || true # Non interactice
 
 # Confirm with user
 read -rp "Proceed with nixos-rebuild $subcommand? [y/N] " confirm
@@ -18,12 +18,12 @@ echo "==> Running nixos-rebuild $subcommand..."
 if sudo nixos-rebuild "$subcommand"; then
     # Get the latest generation name if subcommand affects the system
     if [[ "$subcommand" == "switch" || "$subcommand" == "boot" ]]; then
-        gen_name=$(sudo nix-env --list-generations --profile /nix/var/nix/profiles/system | tail -n 1 | awk '{$1=$1};1')
+        gen_name=$(sudo nix-env --list-generations --profile /nix/var/nix/profiles/system | tail -n 1 | awk '{print $1}')
 
         # Commit the change
         echo "==> Committing changes..."
         git add .
-        git commit -m "nixos: $gen_name"
+        git commit -m "Generation: $gen_name"
 
         echo "✅ Successfully rebuilt and committed: $gen_name"
     else
@@ -31,6 +31,5 @@ if sudo nixos-rebuild "$subcommand"; then
     fi
 else
     echo "❌ nixos-rebuild $subcommand failed."
-    exit 1
 fi
 
