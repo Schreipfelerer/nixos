@@ -30,6 +30,10 @@
     playerctl
     nodejs_24
     corepack_24
+    supertux
+    blender
+    godot
+    vlc
   ];
   
   programs.neovim = {
@@ -70,7 +74,7 @@
 
   # Stylix
   stylix.enable = true;
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-soft.yaml";
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-medium.yaml";
   stylix.targets.neovim.enable = false;
 
   home.stateVersion = "25.05";
