@@ -103,9 +103,11 @@
   services.greetd = {
     enable = true;
     settings.default_session = {
-      command = "${pkgs.greetd.greetd}/bin/agreety --cmd hyprland";
+      command = "${pkgs.greetd.greetd}/bin/agreety --cmd  'sh -c \"dbus-run-session Hyprland\"'";
     };
   };
+
+  services.xserver.enable = true;  # enables X11 base support
   
 
   # Enable the OpenSSH daemon.
