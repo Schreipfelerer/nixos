@@ -73,6 +73,7 @@
       btop.enable = true;
       gtk.enable = true;
       kitty.enable = true;
+      qt.enable = true;
     };
   };
 

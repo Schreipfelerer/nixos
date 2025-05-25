@@ -140,12 +140,16 @@
     libnotify
     waybar
     hypridle
+    hyprpolkitagent
     hyprpaper
     hyprlock
     brightnessctl
     btop
     wl-clipboard
     (ulauncher.override { webkitgtk_4_1 = webkitgtk_4_0; })
+    grim
+    slurp
+    swappy
   ];
 
 
