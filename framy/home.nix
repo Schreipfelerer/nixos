@@ -19,12 +19,12 @@
     discord
     gimp3
     waybar
-    hyprland
     hypridle
     hyprpaper
     hyprlock
     brightnessctl
     swaynotificationcenter
+    libnotify
     spotify
     steam
     playerctl

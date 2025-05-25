@@ -59,6 +59,8 @@
   services.pipewire = {
     enable = true;
     pulse.enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
   };
 
   # Bluetooth
@@ -124,6 +126,16 @@
   ];
 
   swapDevices = [ { device = "/swap/swapfile"; } ];
+
+  # Enable Hyprland
+  programs.hyprland = {
+        enable = true;
+        xwayland.enable = true;
+  };
+
+  # Desktop Portal
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
 
   # This option defines the first version of NixOS you have installed on this particular machine,
