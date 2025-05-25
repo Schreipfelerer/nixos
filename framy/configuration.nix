@@ -127,10 +127,32 @@
 
   swapDevices = [ { device = "/swap/swapfile"; } ];
 
+  # Environment Vars
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+  };
+
+  # Programms
+  environment.systemPackages = with pkgs; [
+    networkmanagerapplet
+    playerctl
+    swaynotificationcenter
+    libnotify
+    waybar
+    hypridle
+    hyprpaper
+    hyprlock
+    brightnessctl
+    btop
+    wl-clipboard
+    (ulauncher.override { webkitgtk_4_1 = webkitgtk_4_0; })
+  ];
+
+
   # Enable Hyprland
   programs.hyprland = {
-        enable = true;
-        xwayland.enable = true;
+    enable = true;
+    xwayland.enable = true;
   };
 
   # Desktop Portal

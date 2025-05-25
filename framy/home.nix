@@ -10,24 +10,13 @@
   home.username = "bo";
   home.homeDirectory = "/home/bo";
   home.packages = with pkgs; [
-    btop
-    wl-clipboard
-    (ulauncher.override { webkitgtk_4_1 = webkitgtk_4_0; })
     thunderbird
     firefox
     nautilus
     discord
     gimp3
-    waybar
-    hypridle
-    hyprpaper
-    hyprlock
-    brightnessctl
-    swaynotificationcenter
-    libnotify
     spotify
     steam
-    playerctl
     nodejs_24
     corepack_24
     blender
