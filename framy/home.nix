@@ -64,9 +64,18 @@
 
 
   # Stylix
-  stylix.enable = true;
-  stylix.autoEnable = false;
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-medium.yaml";
+  stylix = {
+    enable = true;
+    autoEnable = false;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-medium.yaml";
+    
+    targets = {
+      btop.enable = true;
+      gtk.enable = true;
+      kitty.enable = true;
+    };
+  };
+
 
   home.stateVersion = "25.05";
 }
