@@ -17,8 +17,6 @@
     gimp3
     spotify
     steam
-    nodejs_24
-    corepack_24
     blender
     superTux
     vlc
