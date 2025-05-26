@@ -99,6 +99,7 @@
       "wheel"
       "networkmanager"
       "tss"
+      "dialout"
     ];
   };
 
