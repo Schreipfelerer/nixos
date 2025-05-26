@@ -100,6 +100,7 @@
       "networkmanager"
       "tss"
       "dialout"
+      "uucp"
     ];
   };
 
