@@ -86,6 +86,11 @@
     };
   };
 
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+
 
   home.stateVersion = "25.05";
 }
