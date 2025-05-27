@@ -32,6 +32,7 @@
       ripgrep
       gcc
       libgcc
+      stylua
     ];
   };
 
@@ -68,7 +69,7 @@
     '';
     plugins = [
       {name = "tide"; src = pkgs.fishPlugins.tide.src;}
-      {name = "fzf.fish"; src= pkgs.fishPlugins.fzf.src;}
+      {name = "fzf"; src= pkgs.fishPlugins.fzf.src;}
     ];
   };
 
