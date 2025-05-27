@@ -68,6 +68,7 @@
     '';
     plugins = [
       {name = "tide"; src = pkgs.fishPlugins.tide.src;}
+      {name = "fzf.fish"; src= pkgs.fishPlugins.fzf.src;}
     ];
   };
 
