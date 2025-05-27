@@ -66,6 +66,9 @@
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
     '';
+    plugins = [
+      {name = "tide"; src = pkgs.fishPlugins.tide;}
+    ];
   };
 
   # Stylix
