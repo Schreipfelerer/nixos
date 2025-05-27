@@ -22,8 +22,9 @@ if sudo nixos-rebuild "$subcommand"; then
 
         # Commit the change
         echo "==> Committing changes..."
-        git add .
+        git add . > /dev/null
         git commit -m "Generation: $gen_name"
+        git push > /dev/null
 
         echo "✅ Successfully rebuilt and committed: $gen_name"
     else
