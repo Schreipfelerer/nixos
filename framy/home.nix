@@ -58,8 +58,13 @@
   programs.fastfetch = {
     enable = true;
   };
-
-
+  
+  programs.fish = {
+    enable = true;
+    interactiveShellInit = ''
+      set fish_greeting # Disable greeting
+    '';
+  };
 
   # Stylix
   stylix = {
@@ -72,6 +77,7 @@
       gtk.enable = true;
       kitty.enable = true;
       qt.enable = true;
+      fish.enable = true;
     };
   };
 
