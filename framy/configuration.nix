@@ -14,7 +14,6 @@
   boot.loader.systemd-boot.enable = lib.mkForce false;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.systemd.enable = true;
-  boot.kernelParams = ["mem_sleep_default=deep"]; # suspend to ram
 
   boot.loader.timeout = 1;
 
@@ -38,7 +37,6 @@
         # suspend-then-hibernate
         extraConfig = ''
           HibernateDelaySec=30m
-          SuspendState=mem
           '';
   };
 
