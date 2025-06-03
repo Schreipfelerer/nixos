@@ -20,6 +20,7 @@
     blender
     superTux
     vlc
+    prismlauncher
     godot
   ];
   

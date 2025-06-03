@@ -84,6 +84,7 @@
     pulse.enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
+    jack.enable = true;
   };
 
   # Bluetooth
@@ -104,7 +105,7 @@
     fontconfig = {
       enable = true;
       defaultFonts = {
-        serif = [ "Noto Serif" ];
+        serif = [ "0xProto Nerd Font" ];
         sansSerif = [ "0xProto Nerd Font" ];
         monospace = [ "JetBrains Mono" ];
         emoji = [ "Noto Color Emoji" ];
