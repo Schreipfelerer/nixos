@@ -49,7 +49,7 @@
 		modules = [
 		    ./jinx/configuration.nix
 		];
-	    }
+	    };
         };
     };
 }

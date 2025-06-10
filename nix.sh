@@ -5,6 +5,8 @@ set -euo pipefail
 # Default to "switch" if no argument given
 subcommand="${1:-switch}"
 
+host=$(uname -n)
+
 # Show git diff
 echo "==> Showing Git diff:"
 git diff || true # Non interactice
@@ -23,7 +25,7 @@ if sudo nixos-rebuild "$subcommand"; then
         # Commit the change
         echo "==> Committing changes..."
         git add . > /dev/null
-        git commit -m "Generation: $gen_name" > /dev/null
+        git commit -m "$host Generation: $gen_name" > /dev/null
         git push > /dev/null
 
         echo "✅ Successfully rebuilt and committed: $gen_name"
