@@ -110,13 +110,6 @@
     settings = {
       layout = [
           {
-            "Glances" = {
-              header = false;
-              style = "row";
-              columns = 4;
-            };
-          }
-          {
             "7 Seas" = {
               header = true;
               style = "column";
@@ -142,78 +135,16 @@
                     disk = "/";
                   };
                 }
+                {
+                  datetime = {
+                    text_size = "xl";
+                    format = {
+                      timeStyle = "short";
+                    };
+                  };
+                }
     ];
     services = [
-       {
-        Glances = [
-                {
-                  Info = {
-                    widget = {
-                      type = "glances";
-                      url = "http://localhost:61208";
-                      metric = "info";
-                      chart = false;
-                      version = 4;
-                    };
-                  };
-                }
-                {
-                  "CPU Temp" = {
-                    widget = {
-                      type = "glances";
-                      url = "http://localhost:61208";
-                      metric = "sensor:Package id 0";
-                      chart = false;
-                      version = 4;
-                    };
-                  };
-                }
-                {
-                  Processes = {
-                    widget = {
-                      type = "glances";
-                      url = "http://localhost:61208";
-                      metric = "process";
-                      chart = false;
-                      version = 4;
-                    };
-                  };
-                }
-                {
-                  Network = {
-                    widget = {
-                      type = "glances";
-                      url = "http://localhost:61208";
-                      metric = "network:enp2s0";
-                      chart = false;
-                      version = 4;
-                    };
-                  };
-                }
-                {
-                  Memory = {
-                    widget = {
-                      type = "glances";
-                      url = "http://localhost:61208";
-                      metric = "memory";
-                      chart = false;
-                      version = 4;
-                    };
-                  };
-                }
-                {
-                  Filesystem = {
-                    widget = {
-                      type = "glances";
-                      url = "http://localhost:61208";
-                      metric = "fs:/";
-                      chart = false;
-                      version = 4;
-                    };
-                  };
-                }
-            ];
-       }
        {
          "7 Seas" = [
           {
