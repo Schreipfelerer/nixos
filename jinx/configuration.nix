@@ -93,6 +93,14 @@
   # Paperless
   services.paperless = {
     enable = true;
+    port = 2981;
+    address = "paperless.thabo.dev";
+  };
+
+  # GitLab
+  services.gitlab = {
+    enable = true;
+    host = "gitlab.thabo.internal";
   };
 
    # Homepage
@@ -133,7 +141,7 @@
          "AdGuardHome" = {
            href = "http://dns.thabo.internal"; # Nginx proxies to http://localhost:3000
            description = "Network-wide Ad & Tracker Blocking";
-           icon = "adguardhome.png"; # Assuming you have an icon for AdGuard Home
+           icon = "adguard.png"; # Assuming you have an icon for AdGuard Home
          };
        }
        {
@@ -161,6 +169,13 @@
     enable = true;
     settings = {
       MICROBIN_PORT = 8080;
+      MICROBIN_BIND = "bin.thabo.dev";
+      MICROBIN_HIDE_LOGO = true;
+      MICROBIN_HIDE_FOOTER = true;
+      MICROBIN_QR = true;
+      MICROBIN_PUBLIC_PATH = "https://bin.thabo.dev";
+      MICROBIN_ETERNAL_PASTA = true;
+      MICROBIN_ADMIN_USERNAME = false;
     };
   };
 
@@ -178,7 +193,6 @@
   # Adguard
   services.adguardhome = {
     enable = true;
-    openFirewall = true;
   };
 
   # Nginx
@@ -214,7 +228,7 @@
       };
       "paperless.thabo.internal" = {
         locations."/" = {
-          proxyPass = "http://localhost:8000";
+          proxyPass = "http://localhost:28981";
         };
       };
       "thabo.internal" = {
