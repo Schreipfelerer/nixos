@@ -93,14 +93,7 @@
   # Paperless
   services.paperless = {
     enable = true;
-    port = 2981;
-    address = "paperless.thabo.dev";
-  };
-
-  # GitLab
-  services.gitlab = {
-    enable = true;
-    host = "gitlab.thabo.internal";
+    port = 28981;
   };
 
    # Homepage
@@ -108,7 +101,7 @@
     enable = true;
     allowedHosts = "home.thabo.dev,thabo.internal";
     settings = {
-	title = "home.thabo.dev";
+	title = "thabo.internal";
     };
     services = [
        {
@@ -151,13 +144,6 @@
            icon = "nextcloud.png";
          };
        }
-       {
-         "GitLab" = {
-           href = "http://gitlab.thabo.internal"; # Nginx proxies to http://localhost:3001
-           description = "Git Repository Management";
-           icon = "gitlab.png";
-         };
-       }
 
 	 ];
        }
@@ -169,11 +155,10 @@
     enable = true;
     settings = {
       MICROBIN_PORT = 8080;
-      MICROBIN_BIND = "bin.thabo.dev";
       MICROBIN_HIDE_LOGO = true;
       MICROBIN_HIDE_FOOTER = true;
       MICROBIN_QR = true;
-      MICROBIN_PUBLIC_PATH = "https://bin.thabo.dev";
+      MICROBIN_PUBLIC_PATH = "http://bin.thabo.internal";
       MICROBIN_ETERNAL_PASTA = true;
       MICROBIN_ADMIN_USERNAME = false;
     };
@@ -219,11 +204,6 @@
       "vault.thabo.internal" = {
         locations."/" = {
           proxyPass = "http://localhost:8222";
-        };
-      };
-      "gitlab.thabo.internal" = {
-        locations."/" = {
-          proxyPass = "http://localhost:3001";
         };
       };
       "paperless.thabo.internal" = {
