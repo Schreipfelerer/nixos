@@ -151,7 +151,7 @@
       };
       "gitlab.thabo.dev" = {
         locations."/" = {
-          proxyPass = "http://localhost:3000";
+          proxyPass = "http://localhost:3001";
         };
       };
       "paperless.thabo.dev" = {
