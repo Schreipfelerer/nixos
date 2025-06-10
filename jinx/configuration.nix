@@ -102,80 +102,67 @@
     enable = true;
   };
 
-  # Paperless
-  services.paperless = {
-    enable = true;
-    port = 28981;
-  };
-
-  # Glances
-  services.glances = {
-    enable = true;
-    port = 61208;
-  };
-
-   # Homepage
+  # Homepage
   services.homepage-dashboard = {
     enable = true;
     allowedHosts = "thabo.internal";
     settings = {
       layout = [
-          {
-            "7 Seas" = {
-              header = true;
-              style = "column";
-            };
-          }
-          {
-            "Services" = {
-              header = true;
-              style = "column";
-            };
-          }
+        {
+          "7 Seas" = {
+            header = true;
+            style = "column";
+          };
+        }
+        {
+          "Services" = {
+            header = true;
+            style = "column";
+          };
+        }
       ];
     };
     widgets = [
-                {
-                  glances = {
-                    url = "http://glances.thabo.internal";
-                    version = 4;
-                    cpu = true;
-                    mem = true;
-                    cputemp = true;
-                    uptime = true;
-                    disk = "/";
-                  };
-                }
-                {
-                  datetime = {
-                    text_size = "xl";
-                    format = {
-                      timeStyle = "short";
-                      hourCycle = "h23";
-                    };
-                  };
-                }
+      {
+        glances = {
+          url = "http://glances.thabo.internal";
+          version = 4;
+          cpu = true;
+          mem = true;
+          cputemp = true;
+          uptime = true;
+          disk = "/";
+        };
+      }
+      {
+        datetime = {
+          text_size = "xl";
+          format = {
+            timeStyle = "short";
+            hourCycle = "h23";
+          };
+        };
+      }
     ];
     services = [
-       {
-         "7 Seas" = [
+      {
+        "7 Seas" = [
           {
-            
           }
-         ];
-       }
-       {
-         "Services" = [
+        ];
+      }
+      {
+        "Services" = [
           {
             "Paperless" = {
-              href = "http://paperless.thabo.internal"; # Nginx proxies to http://localhost:8000
+              href = "http://paperless.thabo.internal";
               description = "Document Management System";
-              icon = "paperless.png"; # Assuming you have an icon for Paperless in your homepage-dashboard config
+              icon = "paperless.png";
             };
           }
           {
             "Microbin" = {
-              href = "http://bin.thabo.internal"; 
+              href = "http://bin.thabo.internal";
               description = "Pastebin/Code Snippet Sharing";
               icon = "microbin.png";
             };
@@ -191,64 +178,26 @@
             "AdGuardHome" = {
               href = "http://dns.thabo.internal";
               description = "Network-wide Ad & Tracker Blocking";
-               icon = "adguard-home.png";
-             };
-           }
-           {
-             "Nextcloud" = {
-               href = "http://cloud.thabo.internal";
-               description = "Personal Cloud Storage";
-               icon = "nextcloud.png";
-             };
-           }
-           {
-             "Uptime Kuma" = {
-               href = "http://status.thabo.internal";
-               description = "Self-hosted Status Monitoring";
-               icon = "uptime-kuma.png";
-             };
-           }
-	      ];
+              icon = "adguard-home.png";
+            };
+          }
+          {
+            "Nextcloud" = {
+              href = "http://cloud.thabo.internal";
+              description = "Personal Cloud Storage";
+              icon = "nextcloud.png";
+            };
+          }
+          {
+            "Uptime Kuma" = {
+              href = "http://status.thabo.internal";
+              description = "Self-hosted Status Monitoring";
+              icon = "uptime-kuma.png";
+            };
+          }
+        ];
       }
     ];
-  };
- 
-  # Microbin
-  services.microbin = {
-    enable = true;
-    settings = {
-      MICROBIN_PORT = 8080;
-      MICROBIN_PUBLIC_PATH = "http://bin.thabo.internal";
-      MICROBIN_HIDE_LOGO = true;
-      MICROBIN_HIDE_FOOTER = true;
-      MICROBIN_ADMIN_USERNAME = false;
-
-      MICROBIN_QR = true;
-      MICROBIN_ETERNAL_PASTA = true;
-      MICROBIN_ENABLE_BURN_AFTER = true;
-      MICROBIN_PRIVATE = true;
-    };
-  };
-
-  # Nextcloud
-  services.nextcloud = {
-    enable = false;
-    hostName = "cloud.thabo.dev";
-  };
-  
-  # Vaultwarden
-  services.vaultwarden = {
-    enable = true;
-  };
-
-  # Adguard
-  services.adguardhome = {
-    enable = true;
-  };
-
-  # Uptime Kuma
-  services.uptime-kuma = {
-    enable = true;
   };
 
   # Nginx
