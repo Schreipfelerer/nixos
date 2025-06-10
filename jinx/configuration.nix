@@ -132,12 +132,12 @@
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
     virtualHosts = {
-      "cloud.thabo.dev" = {
+      "cloud.thabo.internal" = {
         locations."/" = {
           proxyPass = "http://localhost:8088";
         };
       };
-      "bin.thabo.dev" = {
+      "bin.thabo.internal" = {
         locations."/" = {
           proxyPass = "http://localhost:8080";
         };
@@ -147,22 +147,22 @@
           proxyPass = "http://localhost:3000";
         };
       };
-      "vault.thabo.dev" = {
+      "vault.thabo.internal" = {
         locations."/" = {
           proxyPass = "http://localhost:8222";
         };
       };
-      "gitlab.thabo.dev" = {
+      "gitlab.thabo.internal" = {
         locations."/" = {
           proxyPass = "http://localhost:3001";
         };
       };
-      "paperless.thabo.dev" = {
+      "paperless.thabo.internal" = {
         locations."/" = {
           proxyPass = "http://localhost:8000";
         };
       };
-      "home.thabo.dev" = {
+      "thabo.internal" = {
         locations."/" = {
           proxyPass = "http://localhost:8082";
         };
