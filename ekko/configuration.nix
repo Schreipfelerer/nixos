@@ -31,13 +31,13 @@
   networking.hostName = "ekko";
 
   services.logind = {
-        powerKey = "suspend-then-hibernate";
-        powerKeyLongPress = "poweroff";
-        lidSwitch = "suspend-then-hibernate";
-        # suspend-then-hibernate
-        extraConfig = ''
-          HibernateDelaySec=30m
-          '';
+    powerKey = "suspend-then-hibernate";
+    powerKeyLongPress = "poweroff";
+    lidSwitch = "suspend-then-hibernate";
+    # suspend-then-hibernate
+    extraConfig = ''
+      HibernateDelaySec=30m
+    '';
   };
 
   # Set your time zone.
@@ -72,7 +72,7 @@
         shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
         exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
       fi
-  '';
+    '';
   };
 
   # Enable CUPS to print documents.
