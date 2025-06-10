@@ -102,6 +102,58 @@
     settings = {
 	title = "home.thabo.dev";
     };
+    services = [
+       {
+         "7 Seas" = [];
+       }
+       {
+         "Services" = [
+           {
+           "Paperless" = {
+           href = "http://paperless.thabo.internal"; # Nginx proxies to http://localhost:8000
+           description = "Document Management System";
+           icon = "paperless.png"; # Assuming you have an icon for Paperless in your homepage-dashboard config
+         };
+       }
+       {
+         "Microbin" = {
+           href = "http://bin.thabo.internal"; # Nginx proxies to http://localhost:8080
+           description = "Pastebin/Code Snippet Sharing";
+           icon = "microbin.png"; # Assuming you have an icon for Microbin
+         };
+       }
+       {
+         "Vaultwarden" = {
+           href = "http://vault.thabo.internal"; # Nginx proxies to http://localhost:8222
+           description = "Password Manager";
+           icon = "vaultwarden.png"; # Assuming you have an icon for Vaultwarden
+         };
+       }
+       {
+         "AdGuardHome" = {
+           href = "http://dns.thabo.internal"; # Nginx proxies to http://localhost:3000
+           description = "Network-wide Ad & Tracker Blocking";
+           icon = "adguardhome.png"; # Assuming you have an icon for AdGuard Home
+         };
+       }
+       {
+         "Nextcloud" = {
+           href = "http://cloud.thabo.internal"; # Nginx proxies to http://localhost:8088
+           description = "Personal Cloud Storage";
+           icon = "nextcloud.png";
+         };
+       }
+       {
+         "GitLab" = {
+           href = "http://gitlab.thabo.internal"; # Nginx proxies to http://localhost:3001
+           description = "Git Repository Management";
+           icon = "gitlab.png";
+         };
+       }
+
+	 ];
+       }
+    ];
   };
  
   # Paperless
