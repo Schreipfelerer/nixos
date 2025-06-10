@@ -98,7 +98,10 @@
    # Homepage
   services.homepage-dashboard = {
     enable = true;
-    openFirewall = true;
+    allowedHosts = "home.thabo.dev,thabo.internal";
+    settings = {
+	title = "home.thabo.dev";
+    };
   };
  
   # Paperless
