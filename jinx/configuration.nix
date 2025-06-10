@@ -104,6 +104,9 @@
   # Paperless
   services.microbin = {
     enable = true;
+    settings = {
+      MICROBIN_PORT = 8080;
+    };
   };
 
   # Nextcloud
@@ -139,7 +142,7 @@
           proxyPass = "http://localhost:8080";
         };
       };
-      "dns.thabo.dev" = {
+      "dns.thabo.internal" = {
         locations."/" = {
           proxyPass = "http://localhost:3000";
         };
