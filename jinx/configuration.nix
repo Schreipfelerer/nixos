@@ -140,6 +140,7 @@
                     text_size = "xl";
                     format = {
                       timeStyle = "short";
+                      hourCycle = "h23";
                     };
                   };
                 }
@@ -276,8 +277,12 @@
     defaults.email = "me@thabo.dev";
   };
 
-  networking.firewall.allowedTCPPorts = [ 53 80 443 ];
-  networking.firewall.allowedUDPPorts = [ 53 ];
+  # Firewall
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 22 53 80 443 ];
+    allowedUDPPorts = [ 53 ];
+  };
 
   # Filesystem
   fileSystems = {
