@@ -11,6 +11,7 @@
 
         # NixOS Hardware
         nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+        nixos-hardware.inputs.nixpkgs.follows = "nixpkgs";
 
         # Secure Boot Stuff
         lanzaboote.url = "github:nix-community/lanzaboote/v0.4.2";
@@ -18,6 +19,11 @@
 
         # Stylix
         stylix.url = "github:nix-community/stylix/release-25.05";
+        stylix.inputs.nixpkgs.follows = "nixpkgs";
+
+        # Sops
+        sops-nix.url = "github:Mix92/sops-nix";
+        sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     };
 
     outputs = {
@@ -44,12 +50,13 @@
                     stylix.nixosModules.stylix
                 ];
             };
-	    jinx = nixpkgs.lib.nixosSystem {
-		specialArgs = {inherit inputs outputs;};
-		modules = [
-		    ./jinx/configuration.nix
-		];
-	    };
+	        jinx = nixpkgs.lib.nixosSystem {
+		        specialArgs = {inherit inputs outputs;};
+		        modules = [
+		            ./jinx/configuration.nix
+                    inputs.sops-nix.nixosModules.sops
+		        ];
+	        };
         };
     };
 }

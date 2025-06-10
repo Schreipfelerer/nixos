@@ -8,7 +8,13 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./arr.nix
     ];
+  
+  sops.defaultSopsFile = .secrets/secrets.yaml;
+  sops.defaultSopsFormat = "yaml";
+
+  sops.age.keyFile = "/home/user/.config/sops/age/keys.txt";
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -84,14 +90,18 @@
   #   enableSSHSupport = true;
   # };
 
-  # List services that you want to enable:
-
   # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;
     settings.PasswordAuthentication = false;
+    settings.LogLevel = "VERBOSE";
   };
-  
+
+  # Protect SSH with fail2ban
+  services.fail2ban = {
+    enable = true;
+  };
+
   # Paperless
   services.paperless = {
     enable = true;
@@ -102,7 +112,6 @@
   services.glances = {
     enable = true;
     port = 61208;
-
   };
 
    # Homepage
@@ -230,12 +239,10 @@
     enable = true;
   };
 
-  # Jellyfin
-  # Bazarr
-  # Radarr
-  # Sonarr
-  # Prowlarr
-  # etc...
+  # Uptime Kuma
+  services.uptime-kuma = {
+    enable = true;
+  }
 
   # Nginx
   services.nginx = {
@@ -271,6 +278,11 @@
       "glances.thabo.internal" = {
         locations."/" = {
           proxyPass = "http://localhost:61208";
+        };
+      };
+      "status.thabo.internal" = {
+        locations."/" = {
+          proxyPass = "http://localhost:3001";
         };
       };
       "thabo.internal" = {
