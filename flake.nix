@@ -44,6 +44,12 @@
                     stylix.nixosModules.stylix
                 ];
             };
+	    jinx = nixpkgs.lib.nixosSystem {
+		specialArgs = {inherit inputs outputs;};
+		modules = [
+		    ./jinx/configuration.nix
+		];
+	    }
         };
     };
 }
