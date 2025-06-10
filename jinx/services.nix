@@ -39,7 +39,7 @@
     enable = true;
   };
 
-    # Paperless
+  # Paperless
   services.paperless = {
     enable = true;
     port = 28981;
