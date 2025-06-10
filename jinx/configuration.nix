@@ -101,7 +101,7 @@
     enable = true;
     allowedHosts = "home.thabo.dev,thabo.internal";
     settings = {
-	title = "thabo.internal";
+	    title = "thabo.internal";
     };
     services = [
        {
@@ -109,62 +109,60 @@
        }
        {
          "Services" = [
+          {
+            "Paperless" = {
+              href = "http://paperless.thabo.internal"; # Nginx proxies to http://localhost:8000
+              description = "Document Management System";
+              icon = "paperless.png"; # Assuming you have an icon for Paperless in your homepage-dashboard config
+            };
+          }
+          {
+            "Microbin" = {
+              href = "http://bin.thabo.internal"; 
+              description = "Pastebin/Code Snippet Sharing";
+              icon = "microbin.png";
+            };
+          }
+          {
+            "Vaultwarden" = {
+              href = "http://vault.thabo.internal"; # Nginx proxies to http://localhost:8222
+              description = "Password Manager";
+              icon = "vaultwarden.png"; # Assuming you have an icon for Vaultwarden
+            };
+          }
+          {
+            "AdGuardHome" = {
+              href = "http://dns.thabo.internal"; # Nginx proxies to http://localhost:3000
+              description = "Network-wide Ad & Tracker Blocking";
+               icon = "adguard.png"; # Assuming you have an icon for AdGuard Home
+             };
+           }
            {
-           "Paperless" = {
-           href = "http://paperless.thabo.internal"; # Nginx proxies to http://localhost:8000
-           description = "Document Management System";
-           icon = "paperless.png"; # Assuming you have an icon for Paperless in your homepage-dashboard config
-         };
-       }
-       {
-         "Microbin" = {
-           href = "http://bin.thabo.internal"; # Nginx proxies to http://localhost:8080
-           description = "Pastebin/Code Snippet Sharing";
-           icon = "microbin.png"; # Assuming you have an icon for Microbin
-         };
-       }
-       {
-         "Vaultwarden" = {
-           href = "http://vault.thabo.internal"; # Nginx proxies to http://localhost:8222
-           description = "Password Manager";
-           icon = "vaultwarden.png"; # Assuming you have an icon for Vaultwarden
-         };
-       }
-       {
-         "AdGuardHome" = {
-           href = "http://dns.thabo.internal"; # Nginx proxies to http://localhost:3000
-           description = "Network-wide Ad & Tracker Blocking";
-           icon = "adguard.png"; # Assuming you have an icon for AdGuard Home
-         };
-       }
-       {
-         "Nextcloud" = {
-           href = "http://cloud.thabo.internal"; # Nginx proxies to http://localhost:8088
-           description = "Personal Cloud Storage";
-           icon = "nextcloud.png";
-         };
-       }
-
-	 ];
-       }
+             "Nextcloud" = {
+               href = "http://cloud.thabo.internal"; # Nginx proxies to http://localhost:8088
+               description = "Personal Cloud Storage";
+               icon = "nextcloud.png";
+             };
+           }
+	      ];
+      }
     ];
   };
  
-  # Paperless
+  # Microbin
   services.microbin = {
     enable = true;
     settings = {
       MICROBIN_PORT = 8080;
+      MICROBIN_PUBLIC_PATH = "http://bin.thabo.internal";
       MICROBIN_HIDE_LOGO = true;
       MICROBIN_HIDE_FOOTER = true;
-      MICROBIN_QR = true;
-      MICROBIN_PUBLIC_PATH = "http://bin.thabo.internal";
-      MICROBIN_ETERNAL_PASTA = true;
       MICROBIN_ADMIN_USERNAME = false;
+
+      MICROBIN_QR = true;
+      MICROBIN_ETERNAL_PASTA = true;
       MICROBIN_ENABLE_BURN_AFTER = true;
-      MICROBIN_HASH_IDS = true;
       MICROBIN_PRIVATE = true;
-      MICROBIN_SHORT_PATH = "http://bin.thabo.internal";
     };
   };
 
