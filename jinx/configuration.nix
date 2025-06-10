@@ -228,6 +228,13 @@
     enable = true;
   };
 
+  # Jellyfin
+  # Bazarr
+  # Radarr
+  # Sonarr
+  # Prowlarr
+  # etc...
+
   # Nginx
   services.nginx = {
     enable = true;
@@ -294,6 +301,12 @@
   
   # Swap
   swapDevices = [ { device = "/swap/swapfile"; } ];
+
+  # Nix flakes
+  nix.settings.experimental-features = [
+    "nix-command" 
+    "flakes"
+  ];
 
   # Delete old generatrions
   nix.gc = {
