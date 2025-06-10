@@ -162,8 +162,7 @@
       MICROBIN_ETERNAL_PASTA = true;
       MICROBIN_ADMIN_USERNAME = false;
       MICROBIN_ENABLE_BURN_AFTER = true;
-      MICROBIN_ENABLE_READONLY = true;
-      MICROBIN_ENCRYPTION_HASH_IDS = true;
+      MICROBIN_HASH_IDS = true;
       MICROBIN_PRIVATE = true;
       MICROBIN_SHORT_PATH = "http://bin.thabo.internal";
     };
