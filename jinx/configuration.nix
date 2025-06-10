@@ -117,16 +117,76 @@
     enable = true;
   };
 
-  # Nginx
-  services.nginx = {
-    enable = true;
-  };
-
   # Adguard
   services.adguardhome = {
     enable = true;
     openFirewall = true;
   };
+
+  # Nginx
+  services.nginx = {
+    enable = true;
+    recommendedProxySettings = true;
+    recommendedTlsSettings = true;
+    virtualHosts = {
+      "cloud.thabo.dev" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/" = {
+          proxyPass = "http://localhost:8088";
+        };
+      };
+      "bin.thabo.dev" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/" = {
+          proxyPass = "http://localhost:8080";
+        };
+      };
+      "dns.thabo.dev" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/" = {
+          proxyPass = "http://localhost:3000";
+        };
+      };
+      "vault.thabo.dev" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/" = {
+          proxyPass = "http://localhost:8222";
+        };
+      };
+      "gitlab.thabo.dev" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/" = {
+          proxyPass = "http://localhost:3000";
+        };
+      };
+      "paperless.thabo.dev" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/" = {
+          proxyPass = "http://localhost:8000";
+        };
+      };
+      "home.thabo.dev" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/" = {
+          proxyPass = "http://localhost:8082";
+        };
+      };
+    };
+  };
+
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "me@thabo.dev";
+  };
+
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
 
   # Filesystem
   fileSystems = {
