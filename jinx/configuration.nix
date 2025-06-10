@@ -107,7 +107,8 @@
 
   # Nextcloud
   services.nextcloud = {
-    enable = true;
+    enable = false;
+    hostName = "cloud.thabo.dev";
   };
   
   # Vaultwarden
