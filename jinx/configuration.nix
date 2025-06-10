@@ -172,7 +172,7 @@
     defaults.email = "me@thabo.dev";
   };
 
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall.allowedTCPPorts = [ 53 80 443 ];
 
   # Filesystem
   fileSystems = {
