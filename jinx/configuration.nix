@@ -242,7 +242,7 @@
   # Uptime Kuma
   services.uptime-kuma = {
     enable = true;
-  }
+  };
 
   # Nginx
   services.nginx = {
