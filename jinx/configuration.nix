@@ -98,6 +98,7 @@
    # Homepage
   services.homepage-dashboard = {
     enable = true;
+    openFirewall = true;
   };
  
   # Paperless
@@ -119,6 +120,12 @@
   # Nginx
   services.nginx = {
     enable = true;
+  };
+
+  # Adguard
+  services.adguardhome = {
+    enable = true;
+    openFirewall = true;
   };
 
   # Filesystem
