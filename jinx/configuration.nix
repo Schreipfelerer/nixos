@@ -130,50 +130,36 @@
     recommendedTlsSettings = true;
     virtualHosts = {
       "cloud.thabo.dev" = {
-        forceSSL = true;
-        enableACME = true;
         locations."/" = {
           proxyPass = "http://localhost:8088";
         };
       };
       "bin.thabo.dev" = {
-        forceSSL = true;
-        enableACME = true;
         locations."/" = {
           proxyPass = "http://localhost:8080";
         };
       };
       "dns.thabo.dev" = {
-        forceSSL = true;
-        enableACME = true;
         locations."/" = {
           proxyPass = "http://localhost:3000";
         };
       };
       "vault.thabo.dev" = {
-        forceSSL = true;
-        enableACME = true;
         locations."/" = {
           proxyPass = "http://localhost:8222";
         };
       };
       "gitlab.thabo.dev" = {
-        forceSSL = true;
-        enableACME = true;
         locations."/" = {
           proxyPass = "http://localhost:3000";
         };
       };
       "paperless.thabo.dev" = {
-        forceSSL = true;
-        enableACME = true;
         locations."/" = {
           proxyPass = "http://localhost:8000";
         };
       };
       "home.thabo.dev" = {
-        forceSSL = true;
-        enableACME = true;
         locations."/" = {
           proxyPass = "http://localhost:8082";
         };
