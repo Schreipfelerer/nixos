@@ -89,6 +89,36 @@
     enable = true;
     settings.PasswordAuthentication = false;
   };
+  
+  # Paperless
+  services.paperless = {
+    enable = true;
+  };
+
+   # Homepage
+  services.homepage-dashboard = {
+    enable = true;
+  };
+ 
+  # Paperless
+  services.microbin = {
+    enable = true;
+  };
+
+  # Nextcloud
+  services.nextcloud = {
+    enable = true;
+  };
+  
+  # Vaultwarden
+  services.vaultwarden = {
+    enable = true;
+  };
+
+  # Nginx
+  services.nginx = {
+    enable = true;
+  };
 
   # Filesystem
   fileSystems = {
@@ -100,6 +130,13 @@
   
   # Swap
   swapDevices = [ { device = "/swap/swapfile"; } ];
+
+  # Delete old generatrions
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
