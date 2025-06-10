@@ -11,8 +11,7 @@
 
         # NixOS Hardware
         nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-        nixos-hardware.inputs.nixpkgs.follows = "nixpkgs";
-
+        
         # Secure Boot Stuff
         lanzaboote.url = "github:nix-community/lanzaboote/v0.4.2";
         lanzaboote.inputs.nixpkgs.follows = "nixpkgs";

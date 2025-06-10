@@ -182,7 +182,7 @@
           }
           {
             "Vaultwarden" = {
-              href = "http://vault.thabo.internal"; # Nginx proxies to http://localhost:8222
+              href = "http://vault.thabo.internal";
               description = "Password Manager";
               icon = "vaultwarden.png";
             };
@@ -199,6 +199,13 @@
                href = "http://cloud.thabo.internal";
                description = "Personal Cloud Storage";
                icon = "nextcloud.png";
+             };
+           }
+           {
+             "Uptime Kuma" = {
+               href = "http://status.thabo.internal";
+               description = "Self-hosted Status Monitoring";
+               icon = "uptime-kuma.png";
              };
            }
 	      ];
