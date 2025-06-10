@@ -96,16 +96,130 @@
     port = 28981;
   };
 
+  # Glances
+  services.glances = {
+    enable = true;
+    port = 61208;
+
+  };
+
    # Homepage
   services.homepage-dashboard = {
     enable = true;
-    allowedHosts = "home.thabo.dev,thabo.internal";
+    allowedHosts = "thabo.internal";
     settings = {
-	    title = "thabo.internal";
+      layout = [
+          {
+            "Glances" = {
+              header = false;
+              style = "row";
+              columns = 4;
+            };
+          }
+          {
+            "7 Seas" = {
+              header = true;
+              style = "column";
+            };
+          }
+          {
+            "Services" = {
+              header = true;
+              style = "column";
+            };
+          }
+      ];
     };
+    widgets = [
+                {
+                  glances = {
+                    url = "http://glances.thabo.internal";
+                    version = 4;
+                    cpu = true;
+                    mem = true;
+                    cputemp = true;
+                    uptime = true;
+                    disk = "/";
+                  };
+                }
+    ];
     services = [
        {
-         "7 Seas" = [];
+        Glances = [
+                {
+                  Info = {
+                    widget = {
+                      type = "glances";
+                      url = "http://localhost:61208";
+                      metric = "info";
+                      chart = false;
+                      version = 4;
+                    };
+                  };
+                }
+                {
+                  "CPU Temp" = {
+                    widget = {
+                      type = "glances";
+                      url = "http://localhost:61208";
+                      metric = "sensor:Package id 0";
+                      chart = false;
+                      version = 4;
+                    };
+                  };
+                }
+                {
+                  Processes = {
+                    widget = {
+                      type = "glances";
+                      url = "http://localhost:61208";
+                      metric = "process";
+                      chart = false;
+                      version = 4;
+                    };
+                  };
+                }
+                {
+                  Network = {
+                    widget = {
+                      type = "glances";
+                      url = "http://localhost:61208";
+                      metric = "network:enp2s0";
+                      chart = false;
+                      version = 4;
+                    };
+                  };
+                }
+                {
+                  Memory = {
+                    widget = {
+                      type = "glances";
+                      url = "http://localhost:61208";
+                      metric = "memory";
+                      chart = false;
+                      version = 4;
+                    };
+                  };
+                }
+                {
+                  Filesystem = {
+                    widget = {
+                      type = "glances";
+                      url = "http://localhost:61208";
+                      metric = "fs:/";
+                      chart = false;
+                      version = 4;
+                    };
+                  };
+                }
+            ];
+       }
+       {
+         "7 Seas" = [
+          {
+            
+          }
+         ];
        }
        {
          "Services" = [
@@ -127,19 +241,19 @@
             "Vaultwarden" = {
               href = "http://vault.thabo.internal"; # Nginx proxies to http://localhost:8222
               description = "Password Manager";
-              icon = "vaultwarden.png"; # Assuming you have an icon for Vaultwarden
+              icon = "vaultwarden.png";
             };
           }
           {
             "AdGuardHome" = {
-              href = "http://dns.thabo.internal"; # Nginx proxies to http://localhost:3000
+              href = "http://dns.thabo.internal";
               description = "Network-wide Ad & Tracker Blocking";
-               icon = "adguard.png"; # Assuming you have an icon for AdGuard Home
+               icon = "adguard-home.png";
              };
            }
            {
              "Nextcloud" = {
-               href = "http://cloud.thabo.internal"; # Nginx proxies to http://localhost:8088
+               href = "http://cloud.thabo.internal";
                description = "Personal Cloud Storage";
                icon = "nextcloud.png";
              };
@@ -211,6 +325,11 @@
       "paperless.thabo.internal" = {
         locations."/" = {
           proxyPass = "http://localhost:28981";
+        };
+      };
+      "glances.thabo.internal" = {
+        locations."/" = {
+          proxyPass = "http://localhost:61208";
         };
       };
       "thabo.internal" = {
