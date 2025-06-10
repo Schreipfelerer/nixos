@@ -28,7 +28,7 @@
   security.pam.services.hyprlock = {}; # PAM for Hyprlock
 
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
-  networking.hostName = "framy";
+  networking.hostName = "ekko";
 
   services.logind = {
         powerKey = "suspend-then-hibernate";

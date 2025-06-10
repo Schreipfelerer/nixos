@@ -38,11 +38,11 @@
         # NixOS configuration entrypoint
         # Available through 'nixos-rebuild --flake .#your-hostname'
         nixosConfigurations = {
-            framy = nixpkgs.lib.nixosSystem {
+           ekko = nixpkgs.lib.nixosSystem {
                 specialArgs = {inherit inputs outputs;};
                 # > Our main nixos configuration file <
                 modules = [
-                    ./framy/configuration.nix
+                    ./ekko/configuration.nix
                     home-manager.nixosModules.home-manager
                     nixos-hardware.nixosModules.framework-11th-gen-intel
                     inputs.lanzaboote.nixosModules.lanzaboote
