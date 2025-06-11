@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./arr.nix
+      ./services.nix
     ];
   
   sops.defaultSopsFile = .secrets/secrets.yaml;
