@@ -64,7 +64,7 @@
     mods =
       let
         inherit (pkgs) lib;
-        modDir = /home/bo/factorio-mods;
+        modDir = /var/lib/factorio/factorio-mods;
         modList = lib.pipe modDir [
           builtins.readDir
           (lib.filterAttrs (k: v: v == "regular"))
