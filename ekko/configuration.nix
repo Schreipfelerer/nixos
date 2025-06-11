@@ -112,7 +112,9 @@
       "dialout"
       "uucp"
     ];
+    shell = pkgs.fish;
   };
+  programs.fish.enable = true;
 
   services.greetd = {
     enable = true;
