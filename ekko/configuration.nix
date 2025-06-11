@@ -61,20 +61,6 @@
   home-manager.useUserPackages = true;
   home-manager.users.bo = ./home.nix;
 
-  # Enable fish system wide
-  programs.fish.enable = true;
-
-  # Dont login in Fish
-  programs.bash = {
-    interactiveShellInit = ''
-      if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
-      then
-        shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
-        exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
-      fi
-    '';
-  };
-
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
