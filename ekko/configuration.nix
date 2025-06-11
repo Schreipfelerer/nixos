@@ -153,6 +153,15 @@
 
   swapDevices = [ { device = "/swap/swapfile"; } ];
 
+  # Filesystem
+  fileSystems = {
+    "/".options = [ "compress=zstd noatime" ];
+    "/nix".options = [ "compress=zstd noatime" ];
+    "/home".options = [ "compress=zstd" ];
+    "/var/log".options = [ "compress=zstd" "noatime" ];
+    "/swap".options = [ "noatime" ];
+  };
+
   # Environment Vars
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
