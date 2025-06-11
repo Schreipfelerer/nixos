@@ -185,6 +185,7 @@
     grim
     slurp
     swappy
+    dig
   ];
 
 
