@@ -50,4 +50,34 @@
     enable = true;
     port = 61208;
   };
+
+  # Factorio
+  services.factorio = {
+    enable = true;
+    port = 34197;
+    openFirewall = true;
+    game-name = "thabo";
+    description = "Thabo's Factorio Server";
+    admins = [ "Schreipfelerer" ];
+    nonBlockingSaving = true;
+    loadLatestSave = true;
+    mods =
+      let
+        inherit (pkgs) lib;
+        modDir = /home/bo/factorio-mods;
+        modList = lib.pipe modDir [
+          builtins.readDir
+          (lib.filterAttrs (k: v: v == "regular"))
+          (lib.mapAttrsToList (k: v: k))
+          (builtins.filter (lib.hasSuffix ".zip"))
+        ];
+        modToDrv = modFileName:
+          pkgs.runCommand "copy-factorio-mods" {} ''
+            mkdir $out
+            cp ${modDir + "/${modFileName}"} $out/${modFileName}
+          ''
+          // { deps = []; };
+      in
+        builtins.map modToDrv modList;
+  };
 }
