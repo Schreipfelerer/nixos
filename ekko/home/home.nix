@@ -13,6 +13,9 @@
     ./waybar.nix
   ]; 
 
+  # wayland.windowManager.hyprland.enable = true;
+
+
   home.username = "bo";
   home.homeDirectory = "/home/bo";
   home.packages = with pkgs; [
@@ -71,6 +74,8 @@
       kitty.enable = true;
       qt.enable = true;
       fish.enable = true;
+      waybar.enable = true;
+      waybar.addCss = false; 
     };
   };
 
