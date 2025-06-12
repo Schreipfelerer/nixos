@@ -59,7 +59,7 @@
   # Set Homemanager vars
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
-  home-manager.users.bo = ./home.nix;
+  home-manager.users.bo = home/home.nix;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -161,7 +161,6 @@
     playerctl
     swaynotificationcenter
     libnotify
-    waybar
     hypridle
     hyprpolkitagent
     hyprpaper

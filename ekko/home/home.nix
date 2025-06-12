@@ -10,7 +10,9 @@
 
   imports = [
     ./shell.nix
+    ./waybar.nix
   ]; 
+
   home.username = "bo";
   home.homeDirectory = "/home/bo";
   home.packages = with pkgs; [
