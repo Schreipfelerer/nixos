@@ -6,7 +6,7 @@
     enable = true;
     settings = {
       MICROBIN_PORT = 8080;
-      MICROBIN_PUBLIC_PATH = "http://bin.thabo.internal";
+      MICROBIN_PUBLIC_PATH = "https://bin.thabo.dev";
       MICROBIN_HIDE_LOGO = true;
       MICROBIN_HIDE_FOOTER = true;
       MICROBIN_ADMIN_USERNAME = false;

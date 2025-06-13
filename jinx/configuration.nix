@@ -163,7 +163,7 @@
           }
           {
             "Microbin" = {
-              href = "http://bin.thabo.internal";
+              href = "https://bin.thabo.dev";
               description = "Pastebin/Code Snippet Sharing";
               icon = "microbin.png";
             };
@@ -204,7 +204,7 @@
   # Nginx
   services.nginx = {
     enable = true;
-    recommendedProxySettings = true;
+    #recommendedProxySettings = true;
     recommendedTlsSettings = true;
     virtualHosts = {
       "cloud.thabo.internal" = {
@@ -212,7 +212,9 @@
           proxyPass = "http://localhost:8088";
         };
       };
-      "bin.thabo.internal" = {
+      "bin.thabo.dev" = {
+        useACMEHost = "thabo.dev";
+        forceSSL = true;
         locations."/" = {
           proxyPass = "http://localhost:8080";
         };
@@ -252,7 +254,12 @@
 
   security.acme = {
     acceptTerms = true;
-    defaults.email = "me@thabo.dev";
+    defaults.email = "you@thabo.dev";
+    certs."thabo.dev" = {
+      extraDomainNames = [ "*.thabo.dev" ];
+      dnsProvider = "hetzner";
+      environmentFile = "/var/lib/acme/hetzner.env";
+    };
   };
 
   # Firewall
