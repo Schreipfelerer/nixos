@@ -22,7 +22,12 @@
   services.nextcloud = {
     enable = true;
     hostName = "cloud.thabo.dev";
-    config.adminpassFile = "/var/lib/nextcloud/admin-password";
+    config = {
+      adminpassFile = "/var/lib/nextcloud/admin-password";
+      dbtype = "pgsql";
+    };
+    https = true;
+    virtualHosts."localhost".listen = [ { addr = "127.0.0.1"; port = 8088; } ];
   };
   
   # Vaultwarden
