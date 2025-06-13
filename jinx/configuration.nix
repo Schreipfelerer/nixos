@@ -201,6 +201,7 @@
     ];
   };
 
+  users.users.nginx.extraGroups = [ "acme" ];
   # Nginx
   services.nginx = {
     enable = true;
