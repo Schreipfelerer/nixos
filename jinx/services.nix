@@ -26,7 +26,6 @@
       adminpassFile = "/var/lib/nextcloud/admin-password";
       dbtype = "pgsql";
     };
-    https = true;
   };
   
   # Vaultwarden
