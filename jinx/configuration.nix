@@ -250,6 +250,12 @@
           proxyPass = "http://localhost:8082";
         };
       };
+      "_" = {
+        default = true;
+        locations."/" = {
+          return = 404;
+        };
+      };
     };
   };
 
