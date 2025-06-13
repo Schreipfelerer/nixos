@@ -250,8 +250,10 @@
           proxyPass = "http://localhost:8082";
         };
       };
-      "_" = {
-        default = true;
+      "wildcart.thabo.dev" = {
+        useACMEHost = "thabo.dev";
+        forceSSL = true;
+        serverAliases = [ "*.thabo.dev" ];
         locations."/" = {
           return = 404;
         };
