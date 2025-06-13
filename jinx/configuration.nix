@@ -184,7 +184,7 @@
           }
           {
             "Nextcloud" = {
-              href = "http://cloud.thabo.internal";
+              href = "https://cloud.thabo.dev";
               description = "Personal Cloud Storage";
               icon = "nextcloud.png";
             };
@@ -208,7 +208,9 @@
     #recommendedProxySettings = true;
     recommendedTlsSettings = true;
     virtualHosts = {
-      "cloud.thabo.internal" = {
+      "cloud.thabo.dev" = {
+        useACMEHost = "thabo.dev";
+        forceSSL = true;
         locations."/" = {
           proxyPass = "http://localhost:8088";
         };

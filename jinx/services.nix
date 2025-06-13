@@ -20,7 +20,7 @@
 
   # Nextcloud
   services.nextcloud = {
-    enable = false;
+    enable = true;
     hostName = "cloud.thabo.dev";
   };
   
