@@ -22,6 +22,7 @@
   services.nextcloud = {
     enable = true;
     hostName = "cloud.thabo.dev";
+    config.adminpassFile = "/var/lib/nextcloud/admin-password";
   };
   
   # Vaultwarden
