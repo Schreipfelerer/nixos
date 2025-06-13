@@ -27,7 +27,6 @@
       dbtype = "pgsql";
     };
     https = true;
-    virtualHosts."localhost".listen = [ { addr = "127.0.0.1"; port = 8088; } ];
   };
   
   # Vaultwarden
