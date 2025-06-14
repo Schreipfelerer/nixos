@@ -163,7 +163,6 @@
     libnotify
     hypridle
     hyprpolkitagent
-    hyprpaper
     hyprlock
     brightnessctl
     btop
@@ -195,17 +194,8 @@
   };
 
   # Power Managment
-  services.tlp = {
-    enable = true;
-    settings = {
-      CPU_SCALING_GOVERNOR_ON_AC = "performance";
-      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-
-      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
-    };
-  };
-
+  services.tlp.enable = false;
+  services.power-profiles-daemon.enable = true;
 
 
   # This option defines the first version of NixOS you have installed on this particular machine,

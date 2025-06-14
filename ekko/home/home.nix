@@ -11,6 +11,7 @@
   imports = [
     ./shell.nix
     ./waybar.nix
+    ./hypr.nix
   ]; 
 
   # wayland.windowManager.hyprland.enable = true;
