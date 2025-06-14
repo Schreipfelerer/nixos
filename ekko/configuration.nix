@@ -161,7 +161,6 @@
     playerctl
     swaynotificationcenter
     libnotify
-    hypridle
     hyprpolkitagent
     hyprlock
     brightnessctl
