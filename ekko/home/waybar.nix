@@ -30,7 +30,7 @@ in
       layer = "top";
       position = "top";
       height = 30;
-      modules-left = [ "cpu" "memory" "idle_inhibitor" "privacy"];
+      modules-left = [ "cpu" "memory" "idle_inhibitor" "power-profiles-daemon" "privacy"];
       modules-center = [ "hyprland/workspaces" "clock" "hyprland/workspaces#work2"];
       modules-right = [ "wireplumber" "backlight" "battery" "network" "bluetooth" "custom/power"];  
       idle_inhibitor =  {
@@ -49,6 +49,18 @@ in
         tooltip-format = "{swapUsed:0.1f} GiB Swap";
         interval = 1;
       };
+      power-profiles-daemon = {
+        format ="[ {icon} ]";
+        tooltip-format = "Power profile: {profile}\nDriver: {driver}";
+        tooltip = true;
+        format-icons = {
+          default = " ";
+          performance = " ";
+          balanced = " ";
+          power-saver = " ";
+        };
+      };
+
 
       clock = {
         format = "{:%H:%M}";
