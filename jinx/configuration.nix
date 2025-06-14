@@ -12,6 +12,9 @@
       ./services.nix
     ];
   
+  system.autoUpgrade.enable = true;
+  system.autoUpgrade.allowReboot = true;
+  
   sops.defaultSopsFile = .secrets/secrets.yaml;
   sops.defaultSopsFormat = "yaml";
 
