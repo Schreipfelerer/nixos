@@ -46,9 +46,9 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
-    font = "sun12x22";
+    earlySetup = true;
+    font = null;
     keyMap = "de";
-  # useXkbConfig = true; # use xkb.options in tty.
   };
   i18n.extraLocaleSettings = {
     LC_TIME = "de_DE.UTF-8";
