@@ -106,11 +106,12 @@
   users.users.bo = {
     isNormalUser = true;
     extraGroups = [ 
-      "wheel"
-      "networkmanager"
-      "tss"
-      "dialout"
-      "uucp"
+      "wheel" # Sudo
+      "networkmanager" # Networking
+      "tss" # Serial
+      "dialout" # Serial
+      "uucp" # Serial
+      "plugdev" # Usb
     ];
     shell = pkgs.fish;
   };
@@ -157,6 +158,7 @@
 
   # Programms
   environment.systemPackages = with pkgs; [
+    busybox
     networkmanagerapplet
     playerctl
     swaynotificationcenter
@@ -174,6 +176,7 @@
     stress
   ];
 
+  programs.pulseview.enable = true; # Sigrok
 
   # Enable Hyprland
   programs.hyprland = {
