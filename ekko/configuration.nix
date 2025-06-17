@@ -65,6 +65,7 @@
   services.printing.enable = true;
 
   # Enable sound.
+  security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     pulse.enable = true;
@@ -174,6 +175,8 @@
     swappy
     dig
     stress
+    pavucontrol # PulseAudio Volume Control (works with PipeWire's PulseAudio emulation)
+    pamixer     # Command-line mixer for PulseAudio/PipeWire
   ];
 
   programs.pulseview.enable = true; # Sigrok
