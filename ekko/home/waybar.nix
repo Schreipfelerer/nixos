@@ -20,8 +20,13 @@ let workspacesDefault = {
 };
 in 
 {
-  # Depedencies
-  home.packages = [];
+  # Dependencies
+  home.packages = with pkgs; [
+    pavucontrol # PulseAudio Volume Control (works with PipeWire's PulseAudio emulation)
+    networkmanagerapplet
+    blueman
+    wlogout
+  ];
 
   programs.waybar = {
     enable = true;
@@ -120,6 +125,8 @@ in
         tooltip-format-wifi = "{essid} ({signalStrength}%) {ipaddr}  ";
         tooltip-format-ethernet = "{ipaddr} 󰈀 ";
         tooltip-format-disconnected = "Disconnected";
+
+        on-click = "nm-connection-editor";
       };
       bluetooth = {
         format = "";
@@ -127,6 +134,9 @@ in
         format-on = "[  ]";
         format-connected = "[ 󰂱 ]";
         format-no-controller = "";
+        
+        on-click = "blueman-manager";
+        on-click-right = "blueman-manager";
       };
       "custom/power" = {
 		    format = "[  ]";
