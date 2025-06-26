@@ -26,12 +26,14 @@
     discord
     gimp3
     spotify
-    steam
     blender
     superTux
     vlc
     prismlauncher
     godot
+
+    adwaita-icon-theme # Provides the icons
+    adw-gtk3           # Provides the GTK theme (including dark variant)
   ];
   
   programs.neovim = {
@@ -77,6 +79,17 @@
       fish.enable = true;
       waybar.enable = true;
       waybar.addCss = false; 
+    };
+  };
+
+  gtk = {
+    enable = true; # This option exists in Home Manager
+
+    # Set the icon theme (Adwaita icons are generally color-agnostic,
+    # but still good to explicitly set).
+    iconTheme = {
+      package = pkgs.adwaita-icon-theme;
+      name = "Adwaita";
     };
   };
 

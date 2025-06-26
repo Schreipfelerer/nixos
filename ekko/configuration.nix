@@ -99,7 +99,7 @@
       };
     };
   }; 
-
+  
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
@@ -178,6 +178,7 @@
   ];
 
   programs.pulseview.enable = true; # Sigrok
+  programs.steam.enable = true; # Steam
 
   # Enable Hyprland
   programs.hyprland = {
