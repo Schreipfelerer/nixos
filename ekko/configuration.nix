@@ -113,6 +113,7 @@
       "dialout" # Serial
       "uucp" # Serial
       "plugdev" # Usb
+      "wireshark" # Wireshark
     ];
     shell = pkgs.fish;
   };
@@ -174,11 +175,13 @@
     slurp
     swappy
     dig
+    wireshark
     stress
   ];
 
   programs.pulseview.enable = true; # Sigrok
   programs.steam.enable = true; # Steam
+  programs.wireshark.enable = true;
 
   # Enable Hyprland
   programs.hyprland = {
