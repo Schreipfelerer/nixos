@@ -175,13 +175,17 @@
     slurp
     swappy
     dig
-    wireshark
     stress
   ];
 
   programs.pulseview.enable = true; # Sigrok
   programs.steam.enable = true; # Steam
   programs.wireshark.enable = true;
+
+  programs.nh = {
+    enable = true;
+    flake = "/etc/nixos";
+  };
 
   # Enable Hyprland
   programs.hyprland = {
