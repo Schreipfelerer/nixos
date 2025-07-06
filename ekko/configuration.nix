@@ -177,6 +177,7 @@
     slurp
     swappy
     dig
+    cloc
     stress
   ];
 
