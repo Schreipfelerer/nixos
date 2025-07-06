@@ -10,6 +10,8 @@
       ./hardware-configuration.nix
     ];
 
+  stylix.enable = true;
+  stylix.autoEnable = false;
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-medium.yaml";
 
    # Use the systemd-boot EFI boot loader.

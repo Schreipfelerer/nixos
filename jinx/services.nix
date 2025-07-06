@@ -20,7 +20,7 @@
 
   # Nextcloud
   services.nextcloud = {
-    enable = true;
+    enable = false;
     hostName = "cloud.thabo.dev";
     config = {
       adminpassFile = "/var/lib/nextcloud/admin-password";
