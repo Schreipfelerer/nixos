@@ -47,7 +47,18 @@
   services.paperless = {
     enable = true;
     port = 28981;
+    settings = {
+      PAPERLESS_OCR_LANGUAGE = "deu+eng";
+      PAPERLESS_OCR_USER_ARGS = {
+        optimize = 1;
+        pdfa_image_compression = "lossless";
+      };
+      PAPERLESS_URL = "http://paperless.thabo.internal";
+      PAPERLESS_DEBUG = "true";
+    };
+    environmentFile = config.sops.secrets."paperless/environment".path;
   };
+  sops.secrets."paperless/environment" = {};
 
   # Glances
   services.glances = {
