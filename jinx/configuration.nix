@@ -164,7 +164,7 @@
         "Services" = [
           {
             "Paperless" = {
-              href = "http://paperless.thabo.internal";
+              href = "https://paperless.thabo.dev";
               description = "Document Management System";
               icon = "paperless.png";
             };
@@ -204,6 +204,13 @@
               icon = "uptime-kuma.png";
             };
           }
+	  {
+	    "Authentik" = {
+	      href = "https://sso.thabo.dev";
+	      description = "SSO-Agent";
+	      icon = "authentik.png";
+	    };
+	  }
         ];
       }
     ];
@@ -254,9 +261,17 @@
           proxyPass = "http://localhost:8222";
         };
       };
-      "paperless.thabo.internal" = {
+      "paperless.thabo.dev" = {
+        useACMEHost = "thabo.dev";
+        forceSSL = true;
         locations."/" = {
           proxyPass = "http://localhost:28981";
+	  extraConfig = ''
+	    proxy_set_header Host $host;
+	    proxy_set_header X-Real-IP $remote_addr;
+	    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	    proxy_set_header X-Forwarded-Proto https; 
+	  '';
         };
       };
       "glances.thabo.internal" = {

@@ -57,8 +57,13 @@
         optimize = 1;
         pdfa_image_compression = "lossless";
       };
-      PAPERLESS_URL = "http://paperless.thabo.internal";
-      PAPERLESS_DEBUG = "true";
+      PAPERLESS_URL = "https://paperless.thabo.dev";
+
+      PAPERLESS_DISABLE_REGULAR_LOGIN = true;
+      PAPERLESS_REDIRECTS_LOGIN_TO_SSO = true;
+      PAPERLESS_SOCIAL_AUTO_SIGNUP = true;
+
+      PAPERLESS_APPS = "allauth.socialaccount.providers.openid_connect"; 
     };
     environmentFile = config.sops.secrets."paperless/environment".path;
   };
