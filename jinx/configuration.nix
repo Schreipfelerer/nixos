@@ -18,7 +18,12 @@
   sops.defaultSopsFile = ../secrets.yaml;
   sops.defaultSopsFormat = "yaml";
 
-  sops.age.keyFile = "/home/user/.config/sops/age/keys.txt";
+  sops.age.keyFile = "/home/bo/.config/sops/age/keys.txt";
+
+  # Docker
+  virtualisation.oci-containers = {
+    backend = "docker";
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -223,6 +228,13 @@
         forceSSL = true;
         locations."/" = {
           proxyPass = "http://localhost:8080";
+        };
+      };
+      "sso.thabo.dev" = {
+        useACMEHost = "thabo.dev";
+        forceSSL = true;
+        locations."/" = {
+          proxyPass = "http://localhost:9443";
         };
       };
       "dns.thabo.internal" = {
