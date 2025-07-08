@@ -18,6 +18,7 @@
   
   sops.secrets."authentik/postgres/environment" = {};
   sops.secrets."authentik/db/environment" = {};
+  sops.secrets."authentik/email/environment" = {};
   sops.secrets."authentik/environment" = {};
   virtualisation.oci-containers.containers = {
     authentik-db = {
@@ -66,9 +67,18 @@
         AUTHENTIK_POSTGRESQL__HOST = "authentik-db";
         AUTHENTIK_POSTGRESQL__USER = "authentik";
         AUTHENTIK_POSTGRESQL__NAME = "authentik";
+
+	# SMTP Host Emails are sent to
+	AUTHENTIK_EMAIL__HOST = "mail.your-server.de";
+	AUTHENTIK_EMAIL__PORT = "465";
+	AUTHENTIK_EMAIL__USE_TLS = "false";
+	AUTHENTIK_EMAIL__USE_SSL = "true";
+	AUTHENTIK_EMAIL__TIMEOUT = "10";
+	AUTHENTIK_EMAIL__FROM = "sso@thabo.dev";
       };
       environmentFiles = [ 
         config.sops.secrets."authentik/db/environment".path
+	config.sops.secrets."authentik/email/environment".path
 	config.sops.secrets."authentik/environment".path
       ];
       volumes = [
