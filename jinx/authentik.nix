@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
   # Docker network for Authentik
   systemd.services."create-docker-network-authentik-net" = {
@@ -16,7 +16,7 @@
     };
   };
   
-  sops.secrets."authentik/postgress/environment" = {};
+  sops.secrets."authentik/postgres/environment" = {};
   sops.secrets."authentik/db/environment" = {};
   sops.secrets."authentik/environment" = {};
   virtualisation.oci-containers.containers = {
@@ -37,15 +37,14 @@
         "--health-retries=5"
         "--health-timeout=5s"
       ];
-      restartPolicy = "unless-stopped";
       environmentFiles = [
-      	config.sops.secrets."authentik/postgress/environment".path
+      	config.sops.secrets."authentik/postgres/environment".path
       ];
     };
 
     authentik-redis = {
       image = "redis:alpine";
-      command = "--save 60 1 --loglevel warning";
+      cmd = [ "--save" "60" "1" "--loglevel" "warning" ];
       volumes = [
         "/var/lib/authentik/redis:/data"
       ];
@@ -57,12 +56,11 @@
         "--health-retries=5"
         "--health-timeout=3s"
       ];
-      restartPolicy = "unless-stopped";
     };
 
     authentik-server = {
       image = "ghcr.io/goauthentik/server:2025.6.3";
-      command = [ "server" ];
+      cmd = [ "server" ];
       environment = {
         AUTHENTIK_REDIS__HOST = "authentik-redis";
         AUTHENTIK_POSTGRESQL__HOST = "authentik-db";
@@ -70,8 +68,8 @@
         AUTHENTIK_POSTGRESQL__NAME = "authentik";
       };
       environmentFiles = [ 
-        config.sops.secrets.db.environment.path
-	config.sops.secrets.environment.path
+        config.sops.secrets."authentik/db/environment".path
+	config.sops.secrets."authentik/environment".path
       ];
       volumes = [
         "/var/lib/authentik/media:/media"
@@ -85,12 +83,11 @@
         "--network=authentik-net"
       ];
       dependsOn = [ "authentik-db" "authentik-redis" ];
-      restartPolicy = "unless-stopped";
     };
 
     authentik-worker = {
       image = "ghcr.io/goauthentik/server:2025.6.3";
-      command = [ "worker" ];
+      cmd = [ "worker" ];
       user = "root";
       environment = {
         AUTHENTIK_REDIS__HOST = "authentik-redis";
@@ -99,8 +96,8 @@
         AUTHENTIK_POSTGRESQL__NAME = "authentik";
       };
       environmentFiles = [ 
-        config.sops.secrets.db.environment.path
-	config.sops.secrets.environment.path
+        config.sops.secrets."authentik/db/environment".path
+	config.sops.secrets."authentik/environment".path
       ];
       volumes = [
         "/var/run/docker.sock:/var/run/docker.sock"
@@ -112,7 +109,6 @@
         "--network=authentik-net"
       ];
       dependsOn = [ "authentik-db" "authentik-redis" ];
-      restartPolicy = "unless-stopped";
     };
   };
 }
