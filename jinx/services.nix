@@ -24,13 +24,22 @@
 
   # Nextcloud
   services.nextcloud = {
-    enable = false;
+    enable = true;
+    package = pkgs.nextcloud31;
     hostName = "cloud.thabo.dev";
+    https = true;
     config = {
-      adminpassFile = "/var/lib/nextcloud/admin-password";
-      dbtype = "pgsql";
+      adminpassFile = config.sops.secrets."nextcloud/adminpass".path;
+      dbtype = "sqlite";
     };
+    settings = {
+      default_phone_region = "DE";
+      maintenance_window_start = 2;
+    };
+    phpOptions."opcache.interned_strings_buffer" = 16;
+    configureRedis = true;
   };
+  sops.secrets."nextcloud/adminpass" = {};
   
   # Vaultwarden
   services.vaultwarden = {

@@ -226,40 +226,6 @@
       "cloud.thabo.dev" = {
         useACMEHost = "thabo.dev";
         forceSSL = true;
-        locations."/" = {
-          proxyPass = "http://localhost:8088";
-        };
-      };
-      "bin.thabo.dev" = {
-        useACMEHost = "thabo.dev";
-        forceSSL = true;
-        locations."/" = {
-          proxyPass = "http://localhost:8080";
-        };
-      };
-      "sso.thabo.dev" = {
-        useACMEHost = "thabo.dev";
-        forceSSL = true;
-        locations."/" = {
-          proxyPass = "http://localhost:9000";
-	  extraConfig = ''
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection "upgrade";
-            proxy_set_header Host $host;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto https;
-          '';
-        };
-      };
-      "dns.thabo.internal" = {
-        locations."/" = {
-          proxyPass = "http://localhost:3000";
-        };
-      };
-      "vault.thabo.internal" = {
-        locations."/" = {
-          proxyPass = "http://localhost:8222";
-        };
       };
       "paperless.thabo.dev" = {
         useACMEHost = "thabo.dev";
@@ -274,7 +240,37 @@
 	  '';
         };
       };
-      "glances.thabo.internal" = {
+     "bin.thabo.dev" = {
+       useACMEHost = "thabo.dev";
+       forceSSL = true;
+       locations."/" = {
+         proxyPass = "http://localhost:8080";
+       };
+     };
+      "sso.thabo.dev" = {
+        useACMEHost = "thabo.dev";
+        forceSSL = true;
+        locations."/" = {
+          proxyPass = "http://localhost:9000";
+          extraConfig = ''
+              proxy_set_header Upgrade $http_upgrade;
+              proxy_set_header Connection "upgrade";
+              proxy_set_header Host $host;
+              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+              proxy_set_header X-Forwarded-Proto https;
+            '';
+	};
+     };
+     "dns.thabo.internal" = {
+       locations."/" = {
+         proxyPass = "http://localhost:3000";
+       };
+     };
+     "vault.thabo.internal" = {
+       locations."/" = {
+         proxyPass = "http://localhost:8222";
+     };
+     "glances.thabo.internal" = {
         locations."/" = {
           proxyPass = "http://localhost:61208";
         };
