@@ -269,6 +269,7 @@
      "vault.thabo.internal" = {
        locations."/" = {
          proxyPass = "http://localhost:8222";
+        };
      };
      "glances.thabo.internal" = {
         locations."/" = {
