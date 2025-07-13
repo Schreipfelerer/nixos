@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
       ./arr.nix
       ./services.nix
+      ./backup.nix
     ];
   
   system.autoUpgrade.enable = true;
