@@ -91,6 +91,11 @@
      btop
      dig
   ];
+  
+  programs.nh = {
+    enable = true;
+    flake = "/etc/nixos";
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
