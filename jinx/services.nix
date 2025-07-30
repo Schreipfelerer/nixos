@@ -3,6 +3,7 @@
 {
   imports = [
     ./authentik.nix
+    ./minecraft.nix
   ];
 
   # Microbin
