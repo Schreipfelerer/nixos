@@ -14,7 +14,7 @@
       MICROBIN_PUBLIC_PATH = "https://bin.thabo.dev";
       MICROBIN_HIDE_LOGO = true;
       MICROBIN_HIDE_FOOTER = true;
-      MICROBIN_ADMIN_USERNAME = false;
+      MICROBIN_ADMIN_PASSWORD = "";
 
       MICROBIN_QR = true;
       MICROBIN_ETERNAL_PASTA = true;
