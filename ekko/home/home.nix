@@ -61,6 +61,8 @@
     };
   };
 
+  home.file.".icons/default".source = "${pkgs.vanilla-dmz}/share/icons/Vanilla-DMZ";
+
   programs.kitty = {
     enable = true;
   };

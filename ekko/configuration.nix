@@ -181,7 +181,8 @@
     dig
     cloc
     stress
-    vscode-fhs
+    nss
+    signal-desktop
   ];
 
   programs.pulseview.enable = true; # Sigrok
