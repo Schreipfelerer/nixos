@@ -31,6 +31,7 @@
     vlc
     prismlauncher
     godot
+    pympress
 
     adwaita-icon-theme # Provides the icons
     adw-gtk3           # Provides the GTK theme (including dark variant)

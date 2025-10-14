@@ -35,7 +35,7 @@
   networking.hostName = "ekko";
 
   services.logind = {
-    powerKey = "suspend-then-hibernate";
+    powerKey = "hibernate";
     powerKeyLongPress = "poweroff";
     lidSwitch = "suspend-then-hibernate";
     # suspend-then-hibernate
@@ -160,6 +160,7 @@
   # Environment Vars
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
+    MOZ_ENABLE_WAYLAND = "1";
   };
 
   # Programms
@@ -183,6 +184,7 @@
     stress
     nss
     signal-desktop
+    libreoffice
   ];
 
   programs.pulseview.enable = true; # Sigrok
