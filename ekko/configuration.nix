@@ -33,16 +33,13 @@
 
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
   networking.hostName = "ekko";
-
+  
   services.logind = {
     powerKey = "hibernate";
     powerKeyLongPress = "poweroff";
     lidSwitch = "suspend-then-hibernate";
-    # suspend-then-hibernate
-    extraConfig = ''
-      HibernateDelaySec=30m
-    '';
   };
+  systemd.sleep.extraConfig = "HibernateDelaySec=30m";
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
