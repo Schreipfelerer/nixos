@@ -29,17 +29,25 @@
   security.tpm2.enable = true;
   security.tpm2.pkcs11.enable = true;  # expose /run/current-system/sw/lib/libtpm2_pkcs11.so
   security.tpm2.tctiEnvironment.enable = true;  # TPM2TOOLS_TCTI and TPM2_PKCS11_TCTI env variables
-  security.pam.services.hyprlock = {}; # PAM for Hyprlock
+  security.pam.services = {
+        hyprlock = {
+        }; # PAM for Hyprlock
+  };
 
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
   networking.hostName = "ekko";
-  
+
+  # Power Actions
   services.logind = {
     powerKey = "hibernate";
     powerKeyLongPress = "poweroff";
     lidSwitch = "suspend-then-hibernate";
   };
   systemd.sleep.extraConfig = "HibernateDelaySec=30m";
+
+  # Fingerprint Reader
+  services.fprintd.enable = false;
+
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
