@@ -121,17 +121,17 @@
   fonts = {
     enableDefaultPackages = true;
     packages = [
+      pkgs.noto-fonts
+      pkgs.noto-fonts-cjk-sans
       pkgs.noto-fonts-color-emoji
-      pkgs.nerd-fonts._0xproto
       pkgs.nerd-fonts.symbols-only
       pkgs.nerd-fonts.jetbrains-mono
-      pkgs.noto-fonts-cjk-sans
     ];
     fontconfig = {
       enable = true;
       defaultFonts = {
-        serif = [ "0xProto Nerd Font" ];
-        sansSerif = [ "0xProto Nerd Font" ];
+        serif = [ "Noto Serif" ];
+        sansSerif = [ "Noto Sans" ];
         monospace = [ "JetBrains Mono" ];
         emoji = [ "Noto Color Emoji" ];
       };
