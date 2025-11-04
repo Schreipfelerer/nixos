@@ -14,16 +14,45 @@
   stylix.autoEnable = false;
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-medium.yaml";
 
-   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = lib.mkForce false;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.initrd.systemd.enable = true;
+  boot = {
+    # Use the systemd-boot EFI boot loader.
+    loader = {
+      systemd-boot.enable = lib.mkForce false;
+      efi.canTouchEfiVariables = true;
+      timeout = 0; # You can still press a key
+    };
+    # Early Systemd
+    initrd.systemd.enable = true;
+        #initrd.kernelModules = [ "i915" ];
 
-  boot.loader.timeout = 1;
+    # Secure Boot
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/var/lib/sbctl";
+        #settings.consoleMode = "max";
+    };
 
-  boot.lanzaboote = {
-    enable = true;
-    pkiBundle = "/var/lib/sbctl";
+    # Fancy Animation :D
+    plymouth = 
+      let 
+        theme = "rings"; # https://github.com/adi1090x/plymouth-themes
+      in
+    {
+      enable = true;
+      inherit theme;
+      themePackages = [ (pkgs.adi1090x-plymouth-themes.override { selected_themes = [ theme ]; }) ];
+    };
+
+    # Enable "Silent boot"
+    consoleLogLevel = 3;
+    initrd.verbose = false;
+    kernelParams = [
+      "quiet"
+      "splash"
+      "boot.shell_on_fail"
+      "udev.log_priority=3"
+      "rd.systemd.show_status=auto"
+    ];
   };
 
   security.tpm2.enable = true;

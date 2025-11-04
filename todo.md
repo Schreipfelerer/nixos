@@ -1,7 +1,6 @@
 Ekko:
 - PAM + Fingerprint
 - Login on startup
-- Custom Startup
 - Nvim
     - Cleaner
     - Markdown Render
@@ -11,6 +10,8 @@ Ekko:
 Jinx:
 - Backup
 - Arrstack
+- VPN
+- FailtoBan
 
 VI:
 - ?
