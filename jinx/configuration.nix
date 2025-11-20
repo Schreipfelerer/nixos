@@ -313,6 +313,33 @@
     };
   };
 
+
+
+  sops.secrets."ddclient/hetzner_token" = {};
+  # ddns
+  services.ddclient = {
+    enable = true;
+    interval = "5min";
+
+    protocol = "hetzner";
+    server = "dns.hetzner.com";
+    zone = "thabo.dev";
+
+    username = "hetzner";
+    passwordFile = config.sops."ddclient/hetzner_token".path;
+    # determine IP via IPv4 web service
+    usev4 = "webv4";
+    domains = [
+      "*.thabo.dev"
+    ];
+
+    extraConfig = ''
+      ttl=300
+    '';
+  };
+
+
+
   # Firewall
   networking.firewall = {
     enable = true;
