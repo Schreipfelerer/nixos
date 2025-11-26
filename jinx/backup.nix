@@ -1,27 +1,23 @@
 { ... }:
 {
+  services.restic.backups.varlib = {
+    paths = [ "/var/lib" ];
+    repository = "sftp:u472792@u472792.your-storagebox.de:/home/home_backup";
 
-  services.btrbk = {
-    instances."remote_hetzner" = {
-      onCalendar = "daily";
-      settings = {
-      	ssh_identity = "/etc/btrbk_key_hetzner";
-	ssh_user = "u472792";
+    extraOptions = [
+      "sftp.command='ssh -i /etc/btrbk_key_hetzner -o StrictHostKeyChecking=no -s sftp'"
+    ];
 
-	timestamp_format = "long";
-    	snapshot_preserve_min = "5d";
-    	snapshot_preserve = "7d 4w 6m";
-	incremental = "no";
+    pruneOpts = [
+      "--keep-daily 7"
+      "--keep-weekly 4"
+      "--keep-monthly 6"
+    ];
 
-	volume."/var/lib" = {
-  	  subvolume = {
-    	    "." = {
-              snapshot_create = "always";
-	    };
-      	  };
-	  target = "raw ssh://u472792.your-storagebox.de:23//home/home_backup";
-    	};
-      };
-    };
+    timerConfig.OnCalendar = "daily";
+    timerConfig.Persistent = true;
+
+    # This flag tells the flake to create the wrapper script in $PATH
+    createWrapper = true;
   };
 }
