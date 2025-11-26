@@ -326,8 +326,7 @@
 
     username = "hetzner";
     passwordFile = config.sops.secrets."ddclient/hetzner_token".path;
-    # determine IP via IPv4 web service
-    usev4 = "webv4";
+    usev6 = ""; #  noipv6
     domains = [
       "*.thabo.dev"
     ];
