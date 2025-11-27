@@ -220,6 +220,8 @@
     nss
     signal-desktop
     libreoffice
+    speedtest-cli
+    filezilla
   ];
 
   programs.pulseview.enable = true; # Sigrok
