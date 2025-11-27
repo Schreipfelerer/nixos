@@ -12,6 +12,10 @@
       ./services.nix
       ./backup.nix
     ];
+
+  environment.variables = {
+    TERM = "xterm-256color";
+  };
   
   system.autoUpgrade.enable = true;
   system.autoUpgrade.allowReboot = true;
