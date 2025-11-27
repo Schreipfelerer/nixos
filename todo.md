@@ -8,7 +8,6 @@ Ekko:
 
 
 Jinx:
-- Backup
 - Arrstack
 - VPN
 - FailtoBan
