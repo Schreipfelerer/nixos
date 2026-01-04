@@ -3,21 +3,21 @@
 
     inputs = {
         # Nixpkgs
-        nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+        nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
 
         # Home manager
-        home-manager.url = "github:nix-community/home-manager/release-25.05";
+        home-manager.url = "github:nix-community/home-manager/release-25.11";
         home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
         # NixOS Hardware
         nixos-hardware.url = "github:NixOS/nixos-hardware/master";
         
         # Secure Boot Stuff
-        lanzaboote.url = "github:nix-community/lanzaboote/v0.4.2";
+        lanzaboote.url = "github:nix-community/lanzaboote/v0.4.3";
         lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
 
         # Stylix
-        stylix.url = "github:nix-community/stylix/release-25.05";
+        stylix.url = "github:nix-community/stylix/release-25.11";
         stylix.inputs.nixpkgs.follows = "nixpkgs";
 
         # Sops
