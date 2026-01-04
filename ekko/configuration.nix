@@ -8,11 +8,16 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./wireguard.nix
     ];
 
   stylix.enable = true;
   stylix.autoEnable = false;
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-medium.yaml";
+
+  sops.defaultSopsFile = ../secrets.yaml;
+  sops.defaultSopsFormat = "yaml";
+  sops.age.keyFile = "/home/bo/.config/sops/age/keys.txt";
 
   boot = {
     # Use the systemd-boot EFI boot loader.
@@ -222,6 +227,7 @@
     libreoffice
     speedtest-cli
     filezilla
+    sops
   ];
 
   programs.pulseview.enable = true; # Sigrok

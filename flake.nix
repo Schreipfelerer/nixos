@@ -47,13 +47,14 @@
                     nixos-hardware.nixosModules.framework-11th-gen-intel
                     inputs.lanzaboote.nixosModules.lanzaboote
                     stylix.nixosModules.stylix
+                    inputs.sops-nix.nixosModules.sops
                 ];
             };
 	        jinx = nixpkgs.lib.nixosSystem {
 		        specialArgs = {inherit inputs outputs;};
 		        modules = [
 		            ./jinx/configuration.nix
-                    	    inputs.sops-nix.nixosModules.sops
+                    inputs.sops-nix.nixosModules.sops
 		        ];
 	        };
         };

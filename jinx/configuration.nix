@@ -11,6 +11,7 @@
       ./arr.nix
       ./services.nix
       ./backup.nix
+      ./wireguard.nix
     ];
 
   environment.variables = {
