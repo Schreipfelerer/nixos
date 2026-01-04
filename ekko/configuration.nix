@@ -72,10 +72,10 @@
   networking.hostName = "ekko";
 
   # Power Actions
-  services.logind = {
-    powerKey = "hibernate";
-    powerKeyLongPress = "poweroff";
-    lidSwitch = "suspend-then-hibernate";
+  services.logind.settings.Login = {
+    HandlePowerKey = "hibernate";
+    HandlePowerKeyLongPress = "poweroff";
+    HandlelLdSwitch = "suspend-then-hibernate";
   };
   systemd.sleep.extraConfig = "HibernateDelaySec=30m";
 
@@ -166,7 +166,7 @@
   services.greetd = {
     enable = true;
     settings.default_session = {
-      command = "${pkgs.greetd.greetd}/bin/agreety --cmd  hyprland";
+      command = "${pkgs.greetd}/bin/agreety --cmd  hyprland";
     };
   };
 

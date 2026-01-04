@@ -52,15 +52,16 @@
 
   programs.git = {
     enable = true;
-    userName = "Schreipfelerer";
-    userEmail = "Schreipfelerer@gmail.com";
-    delta.enable = false;
-    extraConfig = {
+    user.name = "Schreipfelerer";
+    user.email = "Schreipfelerer@gmail.com";
+    settings = {
       push.autoSetupRemote = true;
       init.defaultBranch = "main";
       pull.rebase = true;
     };
   };
+
+  programs.delta.enable = false;
 
   home.file.".icons/default".source = "${pkgs.vanilla-dmz}/share/icons/Vanilla-DMZ";
 
