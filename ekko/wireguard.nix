@@ -1,11 +1,20 @@
-
 { config, pkgs, ... }:
 {
-  sops.secrets."wireguard/ekko" = {};
+
+  services.resolved.enable = true;
+
+  sops.secrets."wireguard/ekko" = { };
   networking.wireguard.interfaces.wg0 = {
     ips = [ "10.200.0.2/24" ];
     privateKeyFile = config.sops.secrets."wireguard/ekko".path;
+    postSetup = ''
+      resolvectl dns wg0 192.168.178.24
+      resolvectl domain wg0 '~thabo.internal'
+    '';
 
+    postShutdown = ''
+      resolvectl revert wg0
+    '';
     peers = [
       {
         publicKey = "1ysNoCfRvjzKgXziDDRVb3I0AGAKCJj3m/QmTdiB+0I=";
@@ -22,4 +31,3 @@
     ];
   };
 }
-
