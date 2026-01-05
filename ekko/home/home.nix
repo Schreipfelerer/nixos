@@ -52,9 +52,16 @@
 
   programs.git = {
     enable = true;
-    user.name = "Schreipfelerer";
-    user.email = "Schreipfelerer@gmail.com";
     settings = {
+        user = {
+          name = "Schreipfelerer";
+          email = "Schreipfelerer@gmail.com";
+        };
+        alias = {
+            s = "status -s";
+            l = "log --pretty=oneline";
+            cam = "commit -am";
+        };
       push.autoSetupRemote = true;
       init.defaultBranch = "main";
       pull.rebase = true;
