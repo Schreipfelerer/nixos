@@ -191,7 +191,7 @@
           }
           {
             "Sonarr" = {
-              href = "https://sonarr.thabo.internal";
+              href = "http://sonarr.thabo.internal";
               description = "Series Indexer";
               icon = "sonarr.png";
             };
@@ -369,7 +369,7 @@
       };
       "sabnzbd.thabo.internal" = {
         locations."/" = {
-          proxyPass = "http://localhost:8080";
+          proxyPass = "http://localhost:8112";
         };
       };
       "glances.thabo.internal" = {
