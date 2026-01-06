@@ -18,7 +18,6 @@
   services.bazarr.group = "media";
 
   services.prowlarr.enable = true;
-  services.prowlarr.group = "media";
 
   services.sabnzbd.enable = true;
   services.sabnzbd.group = "media";
