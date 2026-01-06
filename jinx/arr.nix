@@ -22,6 +22,13 @@
   services.sabnzbd.enable = true;
   services.sabnzbd.group = "media";
 
-  # Transmission
+  services.lidarr.enable = true;
+  services.lidarr.group = "media";
+
+  services.whisparr.enable = true;
+  services.whisparr.group = "media";
+
+  services.readarr.enable = true;
+  services.readarr.group = "media";
 }
 

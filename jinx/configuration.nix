@@ -204,6 +204,27 @@
             };
           }
           {
+            "Whisparr" = {
+              href = "http://whisparr.thabo.internal";
+              description = "Video Indexer";
+              icon = "whisparr.png";
+            };
+          }
+          {
+            "Lidarr" = {
+              href = "http://lidarr.thabo.internal";
+              description = "Music Indexer";
+              icon = "lidarr.png";
+            };
+          }
+          {
+            "Readarr" = {
+              href = "http://readarr.thabo.internal";
+              description = "eBook Indexer";
+              icon = "readarr.png";
+            };
+          }
+          {
             "Bazarr" = {
               href = "http://bazarr.thabo.internal";
               description = "Subtitle Indexer";
@@ -224,6 +245,7 @@
               icon = "sabnzbd.png";
             };
           }
+
         ];
       }
       {
@@ -386,6 +408,21 @@
       "sabnzbd.thabo.internal" = {
         locations."/" = {
           proxyPass = "http://localhost:8112";
+        };
+      };
+      "readarr.thabo.internal" = {
+        locations."/" = {
+          proxyPass = "http://localhost:6868";
+        };
+      };
+      "whisparr.thabo.internal" = {
+        locations."/" = {
+          proxyPass = "http://localhost:6969";
+        };
+      };
+      "lidarr.thabo.internal" = {
+        locations."/" = {
+          proxyPass = "http://localhost:8686";
         };
       };
       "glances.thabo.internal" = {
