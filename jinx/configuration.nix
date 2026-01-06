@@ -395,6 +395,12 @@
           return = 404;
         };
       };
+      "wildcart.thabo.internal" = {
+        serverAliases = [ "*.thabo.internal" ];
+        locations."/" = {
+          return = 404;
+        };
+      };
     };
   };
 
