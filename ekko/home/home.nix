@@ -6,16 +6,16 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
 
   imports = [
     ./shell.nix
     ./waybar.nix
     ./hypr.nix
-  ]; 
+  ];
 
   # wayland.windowManager.hyprland.enable = true;
-
 
   home.username = "bo";
   home.homeDirectory = "/home/bo";
@@ -34,9 +34,9 @@
     pympress
 
     adwaita-icon-theme # Provides the icons
-    adw-gtk3           # Provides the GTK theme (including dark variant)
+    adw-gtk3 # Provides the GTK theme (including dark variant)
   ];
-  
+
   programs.neovim = {
     enable = true;
     viAlias = true;
@@ -53,15 +53,15 @@
   programs.git = {
     enable = true;
     settings = {
-        user = {
-          name = "Schreipfelerer";
-          email = "Schreipfelerer@gmail.com";
-        };
-        alias = {
-            s = "status -s";
-            l = "log --pretty=oneline";
-            cam = "commit -am";
-        };
+      user = {
+        name = "Schreipfelerer";
+        email = "Schreipfelerer@gmail.com";
+      };
+      alias = {
+        s = "status -s";
+        l = "log --pretty=oneline";
+        cam = "commit -am";
+      };
       push.autoSetupRemote = true;
       init.defaultBranch = "main";
       pull.rebase = true;
@@ -81,7 +81,7 @@
     enable = true;
     autoEnable = false;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-medium.yaml";
-    
+
     targets = {
       btop.enable = true;
       gtk.enable = true;
@@ -89,7 +89,7 @@
       qt.enable = true;
       fish.enable = true;
       waybar.enable = true;
-      waybar.addCss = false; 
+      waybar.addCss = false;
     };
   };
 
@@ -108,7 +108,6 @@
     enable = true;
     nix-direnv.enable = true;
   };
-
 
   home.stateVersion = "25.05";
 }

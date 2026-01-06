@@ -15,11 +15,11 @@
       RemainAfterExit = true;
     };
   };
-  
-  sops.secrets."authentik/postgres/environment" = {};
-  sops.secrets."authentik/db/environment" = {};
-  sops.secrets."authentik/email/environment" = {};
-  sops.secrets."authentik/environment" = {};
+
+  sops.secrets."authentik/postgres/environment" = { };
+  sops.secrets."authentik/db/environment" = { };
+  sops.secrets."authentik/email/environment" = { };
+  sops.secrets."authentik/environment" = { };
   virtualisation.oci-containers.containers = {
     authentik-db = {
       image = "postgres:16-alpine";
@@ -39,13 +39,19 @@
         "--health-timeout=5s"
       ];
       environmentFiles = [
-      	config.sops.secrets."authentik/postgres/environment".path
+        config.sops.secrets."authentik/postgres/environment".path
       ];
     };
 
     authentik-redis = {
       image = "redis:alpine";
-      cmd = [ "--save" "60" "1" "--loglevel" "warning" ];
+      cmd = [
+        "--save"
+        "60"
+        "1"
+        "--loglevel"
+        "warning"
+      ];
       volumes = [
         "/var/lib/authentik/redis:/data"
       ];
@@ -68,18 +74,18 @@
         AUTHENTIK_POSTGRESQL__USER = "authentik";
         AUTHENTIK_POSTGRESQL__NAME = "authentik";
 
-	# SMTP Host Emails are sent to
-	AUTHENTIK_EMAIL__HOST = "mail.your-server.de";
-	AUTHENTIK_EMAIL__PORT = "465";
-	AUTHENTIK_EMAIL__USE_TLS = "false";
-	AUTHENTIK_EMAIL__USE_SSL = "true";
-	AUTHENTIK_EMAIL__TIMEOUT = "10";
-	AUTHENTIK_EMAIL__FROM = "sso@thabo.dev";
+        # SMTP Host Emails are sent to
+        AUTHENTIK_EMAIL__HOST = "mail.your-server.de";
+        AUTHENTIK_EMAIL__PORT = "465";
+        AUTHENTIK_EMAIL__USE_TLS = "false";
+        AUTHENTIK_EMAIL__USE_SSL = "true";
+        AUTHENTIK_EMAIL__TIMEOUT = "10";
+        AUTHENTIK_EMAIL__FROM = "sso@thabo.dev";
       };
-      environmentFiles = [ 
+      environmentFiles = [
         config.sops.secrets."authentik/db/environment".path
-	config.sops.secrets."authentik/email/environment".path
-	config.sops.secrets."authentik/environment".path
+        config.sops.secrets."authentik/email/environment".path
+        config.sops.secrets."authentik/environment".path
       ];
       volumes = [
         "/var/lib/authentik/media:/media"
@@ -92,7 +98,10 @@
       extraOptions = [
         "--network=authentik-net"
       ];
-      dependsOn = [ "authentik-db" "authentik-redis" ];
+      dependsOn = [
+        "authentik-db"
+        "authentik-redis"
+      ];
     };
 
     authentik-worker = {
@@ -105,9 +114,9 @@
         AUTHENTIK_POSTGRESQL__USER = "authentik";
         AUTHENTIK_POSTGRESQL__NAME = "authentik";
       };
-      environmentFiles = [ 
+      environmentFiles = [
         config.sops.secrets."authentik/db/environment".path
-	config.sops.secrets."authentik/environment".path
+        config.sops.secrets."authentik/environment".path
       ];
       volumes = [
         "/var/run/docker.sock:/var/run/docker.sock"
@@ -118,7 +127,10 @@
       extraOptions = [
         "--network=authentik-net"
       ];
-      dependsOn = [ "authentik-db" "authentik-redis" ];
+      dependsOn = [
+        "authentik-db"
+        "authentik-redis"
+      ];
     };
   };
 }

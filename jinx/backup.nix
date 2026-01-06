@@ -1,6 +1,6 @@
 { config, ... }:
 {
-  sops.secrets."backup/password" = {};
+  sops.secrets."backup/password" = { };
   services.restic.backups.varlib = {
     paths = [ "/var/lib" ];
     repository = "sftp:u472792@u472792.your-storagebox.de:/home/home_backup";

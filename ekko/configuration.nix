@@ -2,14 +2,20 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ inputs, config, lib, pkgs, ... }:
+{
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./wireguard.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./wireguard.nix
+  ];
 
   stylix.enable = true;
   stylix.autoEnable = false;
@@ -28,25 +34,25 @@
     };
     # Early Systemd
     initrd.systemd.enable = true;
-        #initrd.kernelModules = [ "i915" ];
+    #initrd.kernelModules = [ "i915" ];
 
     # Secure Boot
     lanzaboote = {
       enable = true;
       pkiBundle = "/var/lib/sbctl";
-        #settings.consoleMode = "max";
+      #settings.consoleMode = "max";
     };
 
     # Fancy Animation :D
-    plymouth = 
-      let 
+    plymouth =
+      let
         theme = "rings"; # https://github.com/adi1090x/plymouth-themes
       in
-    {
-      enable = true;
-      inherit theme;
-      themePackages = [ (pkgs.adi1090x-plymouth-themes.override { selected_themes = [ theme ]; }) ];
-    };
+      {
+        enable = true;
+        inherit theme;
+        themePackages = [ (pkgs.adi1090x-plymouth-themes.override { selected_themes = [ theme ]; }) ];
+      };
 
     # Enable "Silent boot"
     consoleLogLevel = 3;
@@ -61,14 +67,14 @@
   };
 
   security.tpm2.enable = true;
-  security.tpm2.pkcs11.enable = true;  # expose /run/current-system/sw/lib/libtpm2_pkcs11.so
-  security.tpm2.tctiEnvironment.enable = true;  # TPM2TOOLS_TCTI and TPM2_PKCS11_TCTI env variables
+  security.tpm2.pkcs11.enable = true; # expose /run/current-system/sw/lib/libtpm2_pkcs11.so
+  security.tpm2.tctiEnvironment.enable = true; # TPM2TOOLS_TCTI and TPM2_PKCS11_TCTI env variables
   security.pam.services = {
-        hyprlock = {
-        }; # PAM for Hyprlock
+    hyprlock = {
+    }; # PAM for Hyprlock
   };
 
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
   networking.hostName = "ekko";
 
   # Power Actions
@@ -81,7 +87,6 @@
 
   # Fingerprint Reader
   services.fprintd.enable = false;
-
 
   # Set your time zone.
   time.timeZone = lib.mkDefault "Europe/Berlin";
@@ -96,8 +101,8 @@
   };
   i18n.extraLocaleSettings = {
     LC_TIME = "de_DE.UTF-8";
-    LC_MEASUREMENT= "de_DE.UTF-8";
-    LC_MONETARY= "de_DE.UTF-8";
+    LC_MEASUREMENT = "de_DE.UTF-8";
+    LC_MONETARY = "de_DE.UTF-8";
   };
 
   # Set Homemanager vars
@@ -142,15 +147,15 @@
         emoji = [ "Noto Color Emoji" ];
       };
     };
-  }; 
-  
+  };
+
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.bo = {
     isNormalUser = true;
-    extraGroups = [ 
+    extraGroups = [
       "wheel" # Sudo
       "networkmanager" # Networking
       "tss" # Serial
@@ -170,7 +175,6 @@
     };
   };
 
-
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
@@ -182,7 +186,7 @@
 
   # Nix flakes
   nix.settings.experimental-features = [
-    "nix-command" 
+    "nix-command"
     "flakes"
   ];
 
@@ -193,7 +197,10 @@
     "/".options = [ "compress=zstd noatime" ];
     "/nix".options = [ "compress=zstd noatime" ];
     "/home".options = [ "compress=zstd" ];
-    "/var/log".options = [ "compress=zstd" "noatime" ];
+    "/var/log".options = [
+      "compress=zstd"
+      "noatime"
+    ];
     "/swap".options = [ "noatime" ];
   };
 
@@ -260,7 +267,6 @@
   services.tlp.enable = false;
   services.power-profiles-daemon.enable = true;
 
-
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
   #
@@ -281,4 +287,3 @@
   system.stateVersion = "25.05"; # Did you read the comment?
 
 }
-

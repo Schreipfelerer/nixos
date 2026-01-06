@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  sops.secrets."wireguard/host" = {};
+  sops.secrets."wireguard/host" = { };
   networking.wireguard = {
     interfaces = {
       wg0 = {

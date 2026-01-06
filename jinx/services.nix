@@ -40,8 +40,8 @@
     phpOptions."opcache.interned_strings_buffer" = 16;
     configureRedis = true;
   };
-  sops.secrets."nextcloud/adminpass" = {};
-  
+  sops.secrets."nextcloud/adminpass" = { };
+
   # Vaultwarden
   services.vaultwarden = {
     enable = true;
@@ -73,11 +73,11 @@
       PAPERLESS_REDIRECTS_LOGIN_TO_SSO = true;
       PAPERLESS_SOCIAL_AUTO_SIGNUP = true;
 
-      PAPERLESS_APPS = "allauth.socialaccount.providers.openid_connect"; 
+      PAPERLESS_APPS = "allauth.socialaccount.providers.openid_connect";
     };
     environmentFile = config.sops.secrets."paperless/environment".path;
   };
-  sops.secrets."paperless/environment" = {};
+  sops.secrets."paperless/environment" = { };
 
   # Glances
   services.glances = {
