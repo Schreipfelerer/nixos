@@ -10,7 +10,7 @@
   services.microbin = {
     enable = true;
     settings = {
-      MICROBIN_PORT = 8080;
+      MICROBIN_PORT = 8111;
       MICROBIN_PUBLIC_PATH = "https://bin.thabo.dev";
       MICROBIN_HIDE_LOGO = true;
       MICROBIN_HIDE_FOOTER = true;

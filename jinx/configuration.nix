@@ -181,6 +181,36 @@
               description = "Stream Videos";
               icon = "jellyfin.png";
             };
+            "Jellyseer" = {
+              href = "https://jellyseer.thabo.internal";
+              description = "Request Content";
+              icon = "jellyseer.png";
+            };
+            "Sonarr" = {
+              href = "https://sonarr.thabo.internal";
+              description = "Series Indexer";
+              icon = "sonarr.png";
+            };
+            "Radarr" = {
+              href = "https://radarr.thabo.internal";
+              description = "Movie Indexer";
+              icon = "radarr.png";
+            };
+            "Bazarr" = {
+              href = "https://bazarr.thabo.internal";
+              description = "Subtitle Indexer";
+              icon = "bazarr.png";
+            };
+            "Prowlarr" = {
+              href = "https://prowlarr.thabo.internal";
+              description = "Index Manager";
+              icon = "prowlarr.png";
+            };
+            "SABnzbd" = {
+              href = "https://sasbnzbd.thabo.internal";
+              description = "Usenet downloader";
+              icon = "SABnzbd.png";
+            };
           }
         ];
       }
@@ -268,7 +298,7 @@
         useACMEHost = "thabo.dev";
         forceSSL = true;
         locations."/" = {
-          proxyPass = "http://localhost:8080";
+          proxyPass = "http://localhost:8111";
         };
       };
       "sso.thabo.dev" = {
@@ -298,6 +328,36 @@
       "tv.thabo.internal" = {
         locations."/" = {
           proxyPass = "http://localhost:8096";
+        };
+      };
+      "sonarr.thabo.internal" = {
+        locations."/" = {
+          proxyPass = "http://localhost:8989";
+        };
+      };
+      "radarr.thabo.internal" = {
+        locations."/" = {
+          proxyPass = "http://localhost:7878";
+        };
+      };
+      "jellyseer.thabo.internal" = {
+        locations."/" = {
+          proxyPass = "http://localhost:5055";
+        };
+      };
+      "bazarr.thabo.internal" = {
+        locations."/" = {
+          proxyPass = "http://localhost:6767";
+        };
+      };
+      "prowlarr.thabo.internal" = {
+        locations."/" = {
+          proxyPass = "http://localhost:9696";
+        };
+      };
+      "sabnzbd.thabo.internal" = {
+        locations."/" = {
+          proxyPass = "http://localhost:8080";
         };
       };
       "glances.thabo.internal" = {
