@@ -183,10 +183,10 @@
             };
           }
           {
-            "Jellyseer" = {
-              href = "http://jellyseer.thabo.internal";
+            "Jellyseerr" = {
+              href = "http://jellyseerr.thabo.internal";
               description = "Request Content";
-              icon = "jellyseer.png";
+              icon = "jellyseerr.png";
             };
           }
           {
@@ -352,7 +352,7 @@
           proxyPass = "http://localhost:7878";
         };
       };
-      "jellyseer.thabo.internal" = {
+      "jellyseerr.thabo.internal" = {
         locations."/" = {
           proxyPass = "http://localhost:5055";
         };
