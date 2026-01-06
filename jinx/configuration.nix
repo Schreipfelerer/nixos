@@ -5,22 +5,22 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./arr.nix
-      ./services.nix
-      ./backup.nix
-      ./wireguard.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./arr.nix
+    ./services.nix
+    ./backup.nix
+    ./wireguard.nix
+  ];
 
   environment.variables = {
     TERM = "xterm-256color";
   };
-  
+
   system.autoUpgrade.enable = true;
   system.autoUpgrade.allowReboot = true;
-  
+
   sops.defaultSopsFile = ../secrets.yaml;
   sops.defaultSopsFormat = "yaml";
 
@@ -76,8 +76,11 @@
   users.users.bo = {
     isNormalUser = true;
     description = "bo";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
+    packages = with pkgs; [ ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM5ZEWaWRUWk1LXyoDdZoLSIdiOxP3JmzNvMR89/sXd1 schreipfelerer@gmail.com"
     ];
@@ -89,11 +92,11 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-     git
-     fastfetch
-     sops
-     btop
-     dig
+    git
+    fastfetch
+    sops
+    btop
+    dig
   ];
 
   programs.neovim = {
@@ -101,7 +104,7 @@
     defaultEditor = true;
     vimAlias = true;
   };
-  
+
   programs.nh = {
     enable = true;
     flake = "/etc/nixos";
@@ -173,6 +176,11 @@
       {
         "7 Seas" = [
           {
+            "Jellyfin" = {
+              href = "https://tv.thabo.internal";
+              description = "Stream Videos";
+              icon = "jellyfin.png";
+            };
           }
         ];
       }
@@ -220,13 +228,13 @@
               icon = "uptime-kuma.png";
             };
           }
-	  {
-	    "Authentik" = {
-	      href = "https://sso.thabo.dev";
-	      description = "SSO-Agent";
-	      icon = "authentik.png";
-	    };
-	  }
+          {
+            "Authentik" = {
+              href = "https://sso.thabo.dev";
+              description = "SSO-Agent";
+              icon = "authentik.png";
+            };
+          }
         ];
       }
     ];
@@ -248,46 +256,51 @@
         forceSSL = true;
         locations."/" = {
           proxyPass = "http://localhost:28981";
-	  extraConfig = ''
-	    proxy_set_header Host $host;
-	    proxy_set_header X-Real-IP $remote_addr;
-	    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-	    proxy_set_header X-Forwarded-Proto https; 
-	  '';
+          extraConfig = ''
+            	    proxy_set_header Host $host;
+            	    proxy_set_header X-Real-IP $remote_addr;
+            	    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            	    proxy_set_header X-Forwarded-Proto https; 
+            	  '';
         };
       };
-     "bin.thabo.dev" = {
-       useACMEHost = "thabo.dev";
-       forceSSL = true;
-       locations."/" = {
-         proxyPass = "http://localhost:8080";
-       };
-     };
+      "bin.thabo.dev" = {
+        useACMEHost = "thabo.dev";
+        forceSSL = true;
+        locations."/" = {
+          proxyPass = "http://localhost:8080";
+        };
+      };
       "sso.thabo.dev" = {
         useACMEHost = "thabo.dev";
         forceSSL = true;
         locations."/" = {
           proxyPass = "http://localhost:9000";
           extraConfig = ''
-              proxy_set_header Upgrade $http_upgrade;
-              proxy_set_header Connection "upgrade";
-              proxy_set_header Host $host;
-              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-              proxy_set_header X-Forwarded-Proto https;
-            '';
-	};
-     };
-     "dns.thabo.internal" = {
-       locations."/" = {
-         proxyPass = "http://localhost:3000";
-       };
-     };
-     "vault.thabo.internal" = {
-       locations."/" = {
-         proxyPass = "http://localhost:8222";
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto https;
+          '';
         };
-     };
-     "glances.thabo.internal" = {
+      };
+      "dns.thabo.internal" = {
+        locations."/" = {
+          proxyPass = "http://localhost:3000";
+        };
+      };
+      "vault.thabo.internal" = {
+        locations."/" = {
+          proxyPass = "http://localhost:8222";
+        };
+      };
+      "tv.thabo.internal" = {
+        locations."/" = {
+          proxyPass = "http://localhost:8096";
+        };
+      };
+      "glances.thabo.internal" = {
         locations."/" = {
           proxyPass = "http://localhost:61208";
         };
@@ -323,9 +336,7 @@
     };
   };
 
-
-
-  sops.secrets."ddclient/hetzner_token" = {};
+  sops.secrets."ddclient/hetzner_token" = { };
   # ddns
   services.ddclient = {
     enable = true;
@@ -336,7 +347,7 @@
 
     username = "hetzner";
     passwordFile = config.sops.secrets."ddclient/hetzner_token".path;
-    usev6 = ""; #  noipv6
+    usev6 = ""; # noipv6
     domains = [
       "*.thabo.dev"
     ];
@@ -346,12 +357,16 @@
     '';
   };
 
-
-
   # Firewall
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 22 53 80 443 25565 ];
+    allowedTCPPorts = [
+      22
+      53
+      80
+      443
+      25565
+    ];
     allowedUDPPorts = [ 53 ];
   };
 
@@ -359,16 +374,19 @@
   fileSystems = {
     "/".options = [ "compress=zstd" ];
     "/nix".options = [ "compress=zstd" ];
-    "/var/lib".options = [ "compress=zstd" "noatime" ];
+    "/var/lib".options = [
+      "compress=zstd"
+      "noatime"
+    ];
     "/swap".options = [ "noatime" ];
   };
-  
+
   # Swap
   swapDevices = [ { device = "/swap/swapfile"; } ];
 
   # Nix flakes
   nix.settings.experimental-features = [
-    "nix-command" 
+    "nix-command"
     "flakes"
   ];
 

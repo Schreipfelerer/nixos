@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  # Jellyfin
+  services.jellyfin.enable = true;
   # Bazarr
   # Radarr
   # Sonarr
