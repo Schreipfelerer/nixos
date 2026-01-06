@@ -221,7 +221,7 @@
             "SABnzbd" = {
               href = "http://sasbnzbd.thabo.internal";
               description = "Usenet downloader";
-              icon = "SABnzbd.png";
+              icon = "sabnzbd.png";
             };
           }
         ];
