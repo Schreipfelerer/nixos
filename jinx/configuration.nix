@@ -177,14 +177,14 @@
         "7 Seas" = [
           {
             "Jellyfin" = {
-              href = "http://tv.thabo.internal";
+              href = "https://tv.thabo.dev";
               description = "Stream Videos";
               icon = "jellyfin.png";
             };
           }
           {
             "Jellyseerr" = {
-              href = "http://jellyseerr.thabo.internal";
+              href = "https://jellyseerr.thabo.dev";
               description = "Request Content";
               icon = "jellyseerr.png";
             };
@@ -337,9 +337,17 @@
           proxyPass = "http://localhost:8222";
         };
       };
-      "tv.thabo.internal" = {
+      "tv.thabo.dev" = {
+        useACMEHost = "thabo.dev";
+        forceSSL = true;
         locations."/" = {
           proxyPass = "http://localhost:8096";
+          extraConfig = ''
+            	    proxy_set_header Host $host;
+            	    proxy_set_header X-Real-IP $remote_addr;
+            	    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            	    proxy_set_header X-Forwarded-Proto https; 
+            	  '';
         };
       };
       "sonarr.thabo.internal" = {
@@ -352,9 +360,17 @@
           proxyPass = "http://localhost:7878";
         };
       };
-      "jellyseerr.thabo.internal" = {
+      "jellyseerr.thabo.dev" = {
+        useACMEHost = "thabo.dev";
+        forceSSL = true;
         locations."/" = {
           proxyPass = "http://localhost:5055";
+          extraConfig = ''
+            	    proxy_set_header Host $host;
+            	    proxy_set_header X-Real-IP $remote_addr;
+            	    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            	    proxy_set_header X-Forwarded-Proto https; 
+            	  '';
         };
       };
       "bazarr.thabo.internal" = {
