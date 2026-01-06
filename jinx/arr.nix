@@ -13,7 +13,6 @@
   services.radarr.group = "media";
 
   services.jellyseerr.enable = true;
-  services.jellyseerr.group = "media";
 
   services.bazarr.enable = true;
   services.bazarr.group = "media";
