@@ -177,14 +177,14 @@
         "7 Seas" = [
           {
             "Jellyfin" = {
-              href = "https://tv.thabo.internal";
+              href = "http://tv.thabo.internal";
               description = "Stream Videos";
               icon = "jellyfin.png";
             };
           }
           {
             "Jellyseer" = {
-              href = "https://jellyseer.thabo.internal";
+              href = "http://jellyseer.thabo.internal";
               description = "Request Content";
               icon = "jellyseer.png";
             };
@@ -198,28 +198,28 @@
           }
           {
             "Radarr" = {
-              href = "https://radarr.thabo.internal";
+              href = "http://radarr.thabo.internal";
               description = "Movie Indexer";
               icon = "radarr.png";
             };
           }
           {
             "Bazarr" = {
-              href = "https://bazarr.thabo.internal";
+              href = "http://bazarr.thabo.internal";
               description = "Subtitle Indexer";
               icon = "bazarr.png";
             };
           }
           {
             "Prowlarr" = {
-              href = "https://prowlarr.thabo.internal";
+              href = "http://prowlarr.thabo.internal";
               description = "Index Manager";
               icon = "prowlarr.png";
             };
           }
           {
             "SABnzbd" = {
-              href = "https://sasbnzbd.thabo.internal";
+              href = "http://sasbnzbd.thabo.internal";
               description = "Usenet downloader";
               icon = "SABnzbd.png";
             };
