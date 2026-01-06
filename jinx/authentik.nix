@@ -11,7 +11,13 @@
     ];
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "${pkgs.docker}/bin/docker network create authentik-net";
+      ExecStart = ''
+        ${pkgs.bash}/bin/bash -c '
+          if ! ${pkgs.docker}/bin/docker network inspect authentik-net >/dev/null 2>&1; then
+            ${pkgs.docker}/bin/docker network create authentik-net
+          fi
+        '
+      '';
       RemainAfterExit = true;
     };
   };
