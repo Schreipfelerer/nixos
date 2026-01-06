@@ -218,13 +218,6 @@
             };
           }
           {
-            "Readarr" = {
-              href = "http://readarr.thabo.internal";
-              description = "eBook Indexer";
-              icon = "readarr.png";
-            };
-          }
-          {
             "Bazarr" = {
               href = "http://bazarr.thabo.internal";
               description = "Subtitle Indexer";
@@ -408,11 +401,6 @@
       "sabnzbd.thabo.internal" = {
         locations."/" = {
           proxyPass = "http://localhost:8112";
-        };
-      };
-      "readarr.thabo.internal" = {
-        locations."/" = {
-          proxyPass = "http://localhost:6868";
         };
       };
       "whisparr.thabo.internal" = {
