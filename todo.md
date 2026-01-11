@@ -8,8 +8,6 @@ Ekko:
 
 
 Jinx:
-- Arrstack
-- VPN
 - FailtoBan
 
 VI:
