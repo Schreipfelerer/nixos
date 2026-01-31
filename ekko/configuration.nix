@@ -122,6 +122,7 @@
     alsa.support32Bit = true;
     jack.enable = true;
   };
+  services.jack.jackd.enable = false;
 
   # Bluetooth
   hardware.bluetooth.enable = true; # enables support for Bluetooth
@@ -163,6 +164,7 @@
       "uucp" # Serial
       "plugdev" # Usb
       "wireshark" # Wireshark
+      "audio" # audio
     ];
     shell = pkgs.fish;
   };
@@ -235,6 +237,8 @@
     speedtest-cli
     filezilla
     sops
+    sonic-pi
+    pipewire.jack
   ];
 
   programs.pulseview.enable = true; # Sigrok
