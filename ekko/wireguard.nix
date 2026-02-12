@@ -4,6 +4,9 @@
   services.resolved.enable = true;
 
   sops.secrets."wireguard/ekko" = { };
+
+  systemd.services."wireguard-wg0".after = [ "network-online.target" ];
+  systemd.services."wireguard-wg0".wants = [ "network-online.target" ];
   networking.wireguard.interfaces.wg0 = {
     ips = [ "10.200.0.2/24" ];
     privateKeyFile = config.sops.secrets."wireguard/ekko".path;
