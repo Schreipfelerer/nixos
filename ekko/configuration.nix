@@ -239,6 +239,7 @@
     sops
     sonic-pi
     pipewire.jack
+    sl
   ];
 
   programs.pulseview.enable = true; # Sigrok
