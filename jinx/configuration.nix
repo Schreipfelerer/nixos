@@ -12,6 +12,7 @@
     ./services.nix
     ./backup.nix
     ./wireguard.nix
+    ./immich.nix
   ];
 
   environment.variables = {
@@ -292,6 +293,13 @@
               icon = "authentik.png";
             };
           }
+	  {
+	    "Immich" = {
+	      href = "https://immich.thabo.dev";
+	      description = "Photos";
+	      icon = "immich.png";
+	    }
+	  }
         ];
       }
     ];
@@ -321,6 +329,13 @@
             	  '';
         };
       };
+      "immich.thabo.dev" = {
+        useACMEHost = "thabo.dev";
+        forceSSL = true;
+        locations."/" = {
+          proxyPass = "http://localhost:${toString config.services.immich.port}";
+        };
+      }
       "bin.thabo.dev" = {
         useACMEHost = "thabo.dev";
         forceSSL = true;
