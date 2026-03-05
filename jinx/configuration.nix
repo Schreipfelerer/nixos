@@ -298,7 +298,7 @@
 	      href = "https://immich.thabo.dev";
 	      description = "Photos";
 	      icon = "immich.png";
-	    }
+	    };
 	  }
         ];
       }
@@ -335,7 +335,7 @@
         locations."/" = {
           proxyPass = "http://localhost:${toString config.services.immich.port}";
         };
-      }
+      };
       "bin.thabo.dev" = {
         useACMEHost = "thabo.dev";
         forceSSL = true;

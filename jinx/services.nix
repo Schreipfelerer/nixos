@@ -26,7 +26,7 @@
   # Nextcloud
   services.nextcloud = {
     enable = true;
-    package = pkgs.nextcloud31;
+    package = pkgs.nextcloud33;
     hostName = "cloud.thabo.dev";
     https = true;
     config = {
