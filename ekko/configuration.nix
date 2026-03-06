@@ -30,7 +30,7 @@
     loader = {
       systemd-boot.enable = lib.mkForce false;
       efi.canTouchEfiVariables = true;
-      timeout = 0; # You can still press a key
+      timeout = 2; # You can still press a key
     };
     # Early Systemd
     initrd.systemd.enable = true;
