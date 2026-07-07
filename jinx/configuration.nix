@@ -480,7 +480,7 @@
     protocol = "hetzner";
     zone = "thabo.dev";
 
-    username = "hetzner";
+    username = "hetznercloud";
     passwordFile = config.sops.secrets."ddclient/hetzner_token".path;
     usev6 = ""; # noipv6
     domains = [
@@ -490,6 +490,16 @@
     extraConfig = ''
       ttl=300
     '';
+
+    package = pkgs.ddclient.overrideAttrs (old: {
+      version = "4.0.1-rc.1";
+      src = pkgs.fetchFromGitHub {
+        owner = "ddclient";
+        repo = "ddclient";
+        rev = "v4.0.1-rc.1";
+        hash = "sha256-VPZnE34Mz2QqMrLA2ZDapcc8zfvBQhHMAw3w056lAM8=";
+      };
+    });
   };
 
   # Firewall
