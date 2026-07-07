@@ -461,13 +461,15 @@
     };
   };
 
+  sops.secrets."acme/environment" = { };
   security.acme = {
     acceptTerms = true;
     defaults.email = "you@thabo.dev";
     certs."thabo.dev" = {
       extraDomainNames = [ "*.thabo.dev" ];
       dnsProvider = "hetzner";
-      environmentFile = "/var/lib/acme/hetzner.env";
+      environmentFile = config.sops.secrets."acme/environment".path;
+
     };
   };
 
