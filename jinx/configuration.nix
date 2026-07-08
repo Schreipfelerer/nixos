@@ -336,6 +336,9 @@
         locations."/" = {
           proxyPass = "http://localhost:${toString config.services.immich.port}";
         };
+	extraConfig = ''
+          client_max_body_size 0;
+	'';
       };
       "bin.thabo.dev" = {
         useACMEHost = "thabo.dev";
