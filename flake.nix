@@ -17,7 +17,7 @@
     lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
 
     # Stylix
-    stylix.url = "github:nix-community/stylix/release-25.11";
+    stylix.url = "github:nix-community/stylix/release-26.05";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
 
     # Sops

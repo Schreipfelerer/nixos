@@ -27,7 +27,6 @@
     gimp3
     spotify
     blender
-    superTux
     vlc
     prismlauncher
     godot
@@ -48,6 +47,8 @@
       libgcc
       stylua
     ];
+    withRuby = false;
+    withPython3 = false;
   };
 
   programs.git = {
@@ -61,6 +62,8 @@
         s = "status -s";
         l = "log --pretty=oneline";
         cam = "commit -am";
+        cm = "commit -m";
+        rh = "reset --hard";
       };
       push.autoSetupRemote = true;
       init.defaultBranch = "main";

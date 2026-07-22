@@ -83,7 +83,9 @@
     HandlePowerKeyLongPress = "poweroff";
     HandlelLdSwitch = "suspend-then-hibernate";
   };
-  systemd.sleep.extraConfig = "HibernateDelaySec=30m";
+  systemd.sleep.settings.Sleep = {
+    HibernateDelaySec = "30m";
+  };
 
   # Fingerprint Reader
   services.fprintd.enable = false;
@@ -237,7 +239,6 @@
     speedtest-cli
     filezilla
     sops
-    sonic-pi
     pipewire.jack
     sl
   ];
