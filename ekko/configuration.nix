@@ -42,11 +42,13 @@
   services.logind.settings.Login = {
     HandlePowerKey = "hibernate";
     HandlePowerKeyLongPress = "poweroff";
-    HandlelLdSwitch = "suspend-then-hibernate";
+    HandleLidSwitch = "suspend-then-hibernate";
   };
   systemd.sleep.settings.Sleep = {
     HibernateDelaySec = "30m";
   };
+
+  services.upower.enable = true;
 
   # Fingerprint Reader
   services.fprintd.enable = false;
