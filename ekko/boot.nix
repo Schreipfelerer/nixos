@@ -1,11 +1,11 @@
-{ lib, pkgs, ...}: {
+{ lib, pkgs, ... }: {
 
   boot = {
     # Use the systemd-boot EFI boot loader.
     loader = {
       systemd-boot.enable = lib.mkForce false;
       efi.canTouchEfiVariables = true;
-      timeout = 2; # You can still press a key
+      timeout = 0; # You can still press a key
     };
     # Early Systemd
     initrd.systemd.enable = true;
@@ -15,6 +15,12 @@
     lanzaboote = {
       enable = true;
       pkiBundle = "/var/lib/sbctl";
+      autoGenerateKeys.enable = true;
+      autoEnrollKeys = {
+        enable = true;
+        includeFirmwareBuiltinKeys = true;
+        autoReboot = true;
+      };
       #settings.consoleMode = "max";
     };
 
