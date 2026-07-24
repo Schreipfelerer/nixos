@@ -36,21 +36,6 @@
     adw-gtk3 # Provides the GTK theme (including dark variant)
   ];
 
-  programs.neovim = {
-    enable = true;
-    viAlias = true;
-    vimAlias = true;
-    defaultEditor = true;
-    extraPackages = with pkgs; [
-      ripgrep
-      gcc
-      libgcc
-      stylua
-    ];
-    withRuby = false;
-    withPython3 = false;
-  };
-
   programs.git = {
     enable = true;
     settings = {

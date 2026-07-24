@@ -14,7 +14,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./wireguard.nix
+    #./wireguard.nix
   ];
 
   stylix.enable = true;
@@ -64,6 +64,15 @@
       "udev.log_priority=3"
       "rd.systemd.show_status=auto"
     ];
+  };
+
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+    defaultEditor = true;
+    withRuby = false;
+    withPython3 = false;
   };
 
   security.tpm2.enable = true;
@@ -164,7 +173,6 @@
       "tss" # Serial
       "dialout" # Serial
       "uucp" # Serial
-      "plugdev" # Usb
       "wireshark" # Wireshark
       "audio" # audio
     ];
@@ -241,9 +249,14 @@
     sops
     pipewire.jack
     sl
+    #neovim
+
+    ripgrep
+    gcc
+    libgcc
+    stylua
   ];
 
-  programs.pulseview.enable = true; # Sigrok
   programs.steam.enable = true; # Steam
   programs.wireshark.enable = true;
 
