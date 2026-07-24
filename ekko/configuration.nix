@@ -206,8 +206,14 @@
 
   # Filesystem
   fileSystems = {
-    "/".options = [ "compress=zstd noatime" ];
-    "/nix".options = [ "compress=zstd noatime" ];
+    "/".options = [
+      "compress=zstd"
+      "noatime"
+    ];
+    "/nix".options = [
+      "compress=zstd"
+      "noatime"
+    ];
     "/home".options = [ "compress=zstd" ];
     "/var/log".options = [
       "compress=zstd"
