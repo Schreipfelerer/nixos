@@ -13,7 +13,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     # Secure Boot Stuff
-    lanzaboote.url = "github:nix-community/lanzaboote/v0.4.3";
+    lanzaboote.url = "github:nix-community/lanzaboote/v1.1.0";
     lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
 
     # Stylix
