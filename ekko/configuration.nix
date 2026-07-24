@@ -183,7 +183,7 @@
   services.greetd = {
     enable = true;
     settings.default_session = {
-      command = "${pkgs.greetd}/bin/agreety --cmd  hyprland";
+      command = "${pkgs.greetd}/bin/agreety --cmd  start-hyprland";
     };
   };
 
