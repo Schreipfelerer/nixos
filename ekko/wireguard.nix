@@ -26,7 +26,7 @@
         # Route host LAN + WG subnet
         allowedIPs = [
           "10.200.0.0/24"
-          "192.168.0.0/16"
+          "192.168.4.0/24"
         ];
 
         persistentKeepalive = 25;
