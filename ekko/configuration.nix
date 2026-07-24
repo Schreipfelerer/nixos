@@ -15,6 +15,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     #./wireguard.nix
+    ./boot.nix
   ];
 
   stylix.enable = true;
@@ -25,47 +26,6 @@
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = "/home/bo/.config/sops/age/keys.txt";
 
-  boot = {
-    # Use the systemd-boot EFI boot loader.
-    loader = {
-      systemd-boot.enable = lib.mkForce false;
-      efi.canTouchEfiVariables = true;
-      timeout = 2; # You can still press a key
-    };
-    # Early Systemd
-    initrd.systemd.enable = true;
-    #initrd.kernelModules = [ "i915" ];
-
-    # Secure Boot
-    lanzaboote = {
-      enable = true;
-      pkiBundle = "/var/lib/sbctl";
-      #settings.consoleMode = "max";
-    };
-
-    # Fancy Animation :D
-    plymouth =
-      let
-        theme = "rings"; # https://github.com/adi1090x/plymouth-themes
-      in
-      {
-        enable = true;
-        inherit theme;
-        themePackages = [ (pkgs.adi1090x-plymouth-themes.override { selected_themes = [ theme ]; }) ];
-      };
-
-    # Enable "Silent boot"
-    consoleLogLevel = 3;
-    initrd.verbose = false;
-    kernelParams = [
-      "quiet"
-      "splash"
-      "boot.shell_on_fail"
-      "udev.log_priority=3"
-      "rd.systemd.show_status=auto"
-    ];
-  };
-
   programs.neovim = {
     enable = true;
     viAlias = true;
@@ -73,14 +33,6 @@
     defaultEditor = true;
     withRuby = false;
     withPython3 = false;
-  };
-
-  security.tpm2.enable = true;
-  security.tpm2.pkcs11.enable = true; # expose /run/current-system/sw/lib/libtpm2_pkcs11.so
-  security.tpm2.tctiEnvironment.enable = true; # TPM2TOOLS_TCTI and TPM2_PKCS11_TCTI env variables
-  security.pam.services = {
-    hyprlock = {
-    }; # PAM for Hyprlock
   };
 
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
