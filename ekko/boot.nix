@@ -9,7 +9,7 @@
     };
     # Early Systemd
     initrd.systemd.enable = true;
-    #initrd.kernelModules = [ "i915" ];
+    initrd.kernelModules = [ "i915" ];
 
     # Secure Boot
     lanzaboote = {
@@ -23,28 +23,6 @@
       };
       #settings.consoleMode = "max";
     };
-
-    # Fancy Animation :D
-    plymouth =
-      let
-        theme = "rings"; # https://github.com/adi1090x/plymouth-themes
-      in
-      {
-        enable = true;
-        inherit theme;
-        themePackages = [ (pkgs.adi1090x-plymouth-themes.override { selected_themes = [ theme ]; }) ];
-      };
-
-    # Enable "Silent boot"
-    consoleLogLevel = 3;
-    initrd.verbose = false;
-    kernelParams = [
-      "quiet"
-      "splash"
-      "boot.shell_on_fail"
-      "udev.log_priority=3"
-      "rd.systemd.show_status=auto"
-    ];
   };
 
   security = {
