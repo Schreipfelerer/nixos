@@ -23,6 +23,9 @@
     # Sops
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Chessr
+    chessr.url = "github:Schreipfelerer/chessr";
   };
 
   outputs =
@@ -32,6 +35,7 @@
       home-manager,
       nixos-hardware,
       stylix,
+      chessr,
       ...
     }@inputs:
     let
@@ -58,6 +62,7 @@
           modules = [
             ./jinx/configuration.nix
             inputs.sops-nix.nixosModules.sops
+	    ./jinx/chessr.nix
           ];
         };
       };
