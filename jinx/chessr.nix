@@ -8,6 +8,13 @@
       name = "chessr";
       protocol = "uci";
       ponder = false;
+      polyglot = {
+        enabled = true;
+        book.standard = [ "/var/lib/chessr/books/book.bin" ];
+        selection = "weighted_random";
+        min_weight = 1;
+        max_depth = 8;
+      };
     };
     challenge = {
       variants = [ "standard" ];
@@ -18,6 +25,7 @@
       hello = "Hi, {opponent}!";
       goodbye = "Good game!";
     };
+    max_takebacks_accepted = 3;
   };
 in
 {

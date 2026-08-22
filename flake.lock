@@ -75,11 +75,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1787087483,
-        "narHash": "sha256-ivNnr/H2/ljo+tqtlJPz+JvnQOBB1pXqHD8nefWK3VM=",
+        "lastModified": 1787178806,
+        "narHash": "sha256-kqM8UG9aS/dB89HZp1ZdrSpbG411NSboqoBwICKd0QE=",
         "owner": "Schreipfelerer",
         "repo": "chessr",
-        "rev": "028690de3a2627d0003307424209a8cafeb5b865",
+        "rev": "87644e13784832187771e5ed9163493cb60cea94",
         "type": "github"
       },
       "original": {
