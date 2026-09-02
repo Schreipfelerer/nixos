@@ -310,7 +310,7 @@
   # Nginx
   services.nginx = {
     enable = true;
-    #recommendedProxySettings = true;
+    recommendedProxySettings = true;
     recommendedTlsSettings = true;
     virtualHosts = {
       "cloud.thabo.dev" = {
@@ -322,12 +322,6 @@
         forceSSL = true;
         locations."/" = {
           proxyPass = "http://localhost:28981";
-          extraConfig = ''
-            	    proxy_set_header Host $host;
-            	    proxy_set_header X-Real-IP $remote_addr;
-            	    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            	    proxy_set_header X-Forwarded-Proto https; 
-            	  '';
         };
       };
       "immich.thabo.dev" = {
@@ -335,6 +329,7 @@
         forceSSL = true;
         locations."/" = {
           proxyPass = "http://localhost:${toString config.services.immich.port}";
+	  proxyWebsockets = true;
         };
 	extraConfig = ''
           client_max_body_size 0;
@@ -352,13 +347,7 @@
         forceSSL = true;
         locations."/" = {
           proxyPass = "http://localhost:9000";
-          extraConfig = ''
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection "upgrade";
-            proxy_set_header Host $host;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto https;
-          '';
+	  proxyWebsockets = true;
         };
       };
       "dns.thabo.internal" = {
@@ -376,12 +365,7 @@
         forceSSL = true;
         locations."/" = {
           proxyPass = "http://localhost:8096";
-          extraConfig = ''
-            	    proxy_set_header Host $host;
-            	    proxy_set_header X-Real-IP $remote_addr;
-            	    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            	    proxy_set_header X-Forwarded-Proto https; 
-            	  '';
+	  proxyWebsockets = true;
         };
       };
       "sonarr.thabo.internal" = {
@@ -399,12 +383,6 @@
         forceSSL = true;
         locations."/" = {
           proxyPass = "http://localhost:5055";
-          extraConfig = ''
-            	    proxy_set_header Host $host;
-            	    proxy_set_header X-Real-IP $remote_addr;
-            	    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            	    proxy_set_header X-Forwarded-Proto https; 
-            	  '';
         };
       };
       "bazarr.thabo.internal" = {
