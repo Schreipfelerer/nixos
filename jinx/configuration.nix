@@ -455,6 +455,7 @@
   };
 
   sops.secrets."ddclient/hetzner_token" = { };
+  systemd.services.ddclient.after = [ "nss-user-lookup.target" ];
   # ddns
   services.ddclient = {
     enable = true;
