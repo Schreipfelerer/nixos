@@ -13,6 +13,7 @@
     ./backup.nix
     ./wireguard.nix
     ./immich.nix
+    ./its-mytabs.nix
   ];
 
   environment.variables = {
@@ -383,6 +384,13 @@
         forceSSL = true;
         locations."/" = {
           proxyPass = "http://localhost:5055";
+        };
+      };
+      "tabs.thabo.dev" = {
+        useACMEHost = "thabo.dev";
+        forceSSL = true;
+        locations."/" = {
+          proxyPass = "http://localhost:47777";
         };
       };
       "bazarr.thabo.internal" = {
